@@ -2,7 +2,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: stripe-secret-ch-04-11-2026
-  namespace: preprod-ch-04-11-2026
 type: Opaque
 stringData:
   STRIPE_PUBLISHABLE_KEY: "pk_test_51Sx2DTHdJTfC3Zje28LftvFUp7QxfLe1pmikwtPCp3sT5jcZVvBdGGu45eZilG5URnualrmHNB24DKqnlkZwWToJ0028obaQfY"
@@ -13,7 +12,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: stripe-deployment-ch-04-11-2026
-  namespace: preprod-ch-04-11-2026
   labels:
     app: stripe-app-ch-04-11-2026
     env: preprod-ch-04-11-2026
@@ -43,16 +41,15 @@ spec:
           resources:
             requests:
               memory: "128Mi"
-              cpu: "100m"
+              cpu: "10m"
             limits:
               memory: "256Mi"
-              cpu: "250m"
+              cpu: "10m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: stripe-service-ch-04-11-2026
-  namespace: preprod-ch-04-11-2026
 spec:
   type: LoadBalancer
   selector:

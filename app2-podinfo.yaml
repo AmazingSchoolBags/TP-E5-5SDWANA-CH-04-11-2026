@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podinfo-deployment-ch-04-11-2026
-  namespace: preprod-ch-04-11-2026
   labels:
     app: podinfo-app-ch-04-11-2026
 spec:
@@ -23,16 +22,15 @@ spec:
           resources:
             requests:
               memory: "32Mi"
-              cpu: "50m"
+              cpu: "10m"
             limits:
               memory: "64Mi"
-              cpu: "150m"
+              cpu: "10m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: podinfo-service-ch-04-11-2026
-  namespace: preprod-ch-04-11-2026
 spec:
   type: NodePort
   selector:
@@ -40,5 +38,3 @@ spec:
   ports:
     - port: 9898
       targetPort: 9898
-      nodePort: 30098
-      
