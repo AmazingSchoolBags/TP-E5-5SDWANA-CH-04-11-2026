@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stripe-secret-ch-04-11-2026
+  namespace: preprod-ch-04-11-2026
+type: Opaque
+stringData:
+  STRIPE_PUBLISHABLE_KEY: "pk_test_51Sx2DTHdJTfC3Zje28LftvFUp7QxfLe1pmikwtPCp3sT5jcZVvBdGGu45eZilG5URnualrmHNB24DKqnlkZwWToJ0028obaQfY"
+  STRIPE_SECRET_KEY: "sk_test_51Sx2DTHdJTfC3Zjeh7nKuSTP0mdQn5WndLcPpMennCpIAEaMHQKNDoD1Icvt7pyc8AvmacmaGqrhscAmb6A188nL00TJH62Xxk"
+  PRICE_ID: "price_1UXylRHdJTfC3Zje759JSwG9"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stripe-deployment-ch-04-11-2026
+  namespace: preprod-ch-04-11-2026
+  labels:
+    app: stripe-app-ch-04-11-2026
+    env: preprod-ch-04-11-2026
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: stripe-app-ch-04-11-2026
+  template:
+    metadata:
+      labels:
+        app: stripe-app-ch-04-11-2026
+        env: preprod-ch-04-11-2026
+        tier: frontend
+    spec:
+      containers:
+        - name: stripe-container-ch-04-11-2026
+          image: mheib007/stripe-app:v3
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4242
+          envFrom:
+            - secretRef:
+                name: stripe-secret-ch-04-11-2026
+          # Ajout OBLIGATOIRE des limites pour l'autoscaling (HPA) plus tard
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stripe-service-ch-04-11-2026
+  namespace: preprod-ch-04-11-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: stripe-app-ch-04-11-2026
+  ports:
+    - protocol: TCP
+      port: 4242
+      targetPort: 4242
