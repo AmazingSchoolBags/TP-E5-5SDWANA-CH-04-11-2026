@@ -49,6 +49,31 @@ Le paramètre `--address 0.0.0.0` a servi au test depuis un autre poste. Il expo
 
 ![Commande port-forward du service Podinfo](port-forward.png)
 
-## À poursuivre
+### Test de charge et autoscaling HPA
 
-Vérifier les **3 replicas**, confirmer le type de Service prévu pour l'accès externe, puis réaliser les tests de charge k6 et le HPA de **3 à 20 pods**. Répéter ensuite le déploiement dans les environnements `mlops` et `prod`.
+Nous avons réalisé un test de charge sur Podinfo à l'aide d'**ApacheBench**, avec 100 000 requêtes et 1 000 connexions simultanées.
+
+Le HPA a été configuré avec un minimum de **3 pods**, un maximum de **20 pods** et une cible CPU de **50 %**.
+
+**Résultats :**
+
+| Indicateur | Résultat |
+|---|---|
+| Débit moyen | 2 733 requêtes/seconde |
+| Temps de réponse moyen | 365,89 ms |
+| Temps de réponse p95 | 1 016 ms |
+| Replicas au départ | 3 |
+| Maximum demandé par le HPA | 11 |
+| Replicas après le test | 3 |
+
+Lors du test, Kubernetes a automatiquement augmenté le nombre de replicas de **3 à 7, puis à 11**. Après la diminution de la charge, le nombre de replicas est redescendu à **5 puis à 3**.
+
+Les événements Kubernetes `SuccessfulRescale` confirment le fonctionnement de l'autoscaling horizontal.
+
+**Captures des résultats :**
+
+![Test de charge ApacheBench et HPA](test-charge-hpa.png)
+
+![Événements du HPA Podinfo](evenements-hpa.png)
+
+![Évolution des replicas du Deployment](scaling-deployment.png)
