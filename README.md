@@ -103,6 +103,19 @@ flowchart TB
 - **ApacheBench (`ab`)** : génère la charge HTTP pendant nos tests.
 - **Observabilité web** : reste à installer et à valider, par exemple avec Netdata.
 
+### Avantages et limites des technologies utilisées
+
+| Technologie | Avantages | Inconvénients |
+|---|---|---|
+| **Minikube** | Simple pour tester Kubernetes sur une machine virtuelle. | Ressources limitées par la puissance du PC. |
+| **Docker** | Facilite le déploiement des applications avec des images prêtes à l'emploi. | Les images peuvent être volumineuses ou nécessiter des adaptations. |
+| **Kubernetes** | Gère les pods, les Services et la disponibilité des applications. | Configuration plus complexe qu'un simple conteneur Docker. |
+| **HPA** | Adapte automatiquement le nombre de pods selon la charge. | Dépend des métriques CPU et des ressources configurées. |
+| **ApacheBench** | Simple pour réaliser des tests de charge HTTP. | Ne simule pas un parcours utilisateur complet. |
+| **Stripe Checkout** | Permet de tester facilement un paiement sécurisé. | Nécessite une configuration API et une connexion à Stripe. |
+| **Podinfo** | Application Go légère, adaptée aux tests Kubernetes. | Application de démonstration, sans véritable fonctionnalité métier. |
+| **Dashboard Maker** | Interface web simple et sans base MySQL externe. | Les données locales peuvent différer entre les replicas. |
+
 ## Validation des applications dans Preprod
 
 ### Application 1 : Stripe Checkout
