@@ -38,7 +38,7 @@ Cette application permet de simuler un achat en ligne à l'aide de **Stripe Chec
 
 Le **parcours de paiement Stripe en environnement de test fonctionne** : l'application est joignable, la transaction de 250 € est confirmée sur Stripe et une page de confirmation s'affiche.
 
-[Retour au README principal](../../README.md)
+[Retour au README principal](../README.md)
 
 ### Test de charge et autoscaling HPA
 
