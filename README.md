@@ -257,7 +257,7 @@ Nous avons travaillé ensemble sur les vérifications et la préparation de l'or
 - [x] **9 HPA** configurés entre 3 et 20 replicas.
 - [x] Tests de charge **ApacheBench** et montée/descente des replicas observées dans Preprod.
 - [x] Architecture Mermaid et captures des principales validations ajoutées.
-- [ ] Observabilité avec interface web installée et validée.
+- [x] Observabilité avec interface web installée et validée.
 - [ ] Vérification finale de la conformité des images et de l'accès LoadBalancer.
 - [ ] Logs, historique des commandes et rapports individuels finalisés.
 - [ ] Oral préparé.
