@@ -41,3 +41,4 @@ spec:
     - port: 9898
       targetPort: 9898
       nodePort: 30098
+      
