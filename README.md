@@ -216,6 +216,18 @@ Pour tenir compte de la capacité du PC utilisé avec Minikube, nous avons **aju
 
 Ces captures valident la disponibilité des ressources Kubernetes dans les trois namespaces. Les tests HTTP détaillés et les démonstrations de montée en charge ont principalement été réalisés dans **Preprod**.
 
+## Observabilité : Netdata
+
+Nous avons installé **Netdata** dans le namespace `observability-ch-04-11-2026` afin de visualiser les performances système de notre environnement Minikube.
+
+L'application utilise un **Deployment** et un Service **NodePort 31999**, permettant d'accéder à son interface web.
+
+Lors d'un test de charge CPU, nous avons observé une augmentation de la pression CPU sur les graphiques Netdata, puis une diminution après le test.
+
+Cette solution nous permet de suivre les métriques système (CPU, RAM, disque et réseau). Elle ne fournit pas de supervision détaillée par pod, mais répond aux besoins d'observabilité validés par notre professeur.
+
+**[Consulter les captures et les résultats Netdata](Observabilite/README.md)**
+
 ## Points à finaliser
 
 1. Mettre en place et tester une **solution d'observabilité avec interface web** pour suivre les ressources et la charge.
