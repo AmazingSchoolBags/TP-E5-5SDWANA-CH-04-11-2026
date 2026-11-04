@@ -1,0 +1,11 @@
+LAST SEEN   TYPE     REASON              OBJECT                                                   MESSAGE
+6m21s       Normal   Scheduled           pod/netdata-deployment-ch-04-11-2026-657599d46f-z4ncq    Successfully assigned observability-ch-04-11-2026/netdata-deployment-ch-04-11-2026-657599d46f-z4ncq to minikube
+6m20s       Normal   Pulling             pod/netdata-deployment-ch-04-11-2026-657599d46f-z4ncq    Pulling image "netdata/netdata:latest"
+6m19s       Normal   Pulled              pod/netdata-deployment-ch-04-11-2026-657599d46f-z4ncq    Successfully pulled image "netdata/netdata:latest" in 972ms (972ms including waiting). Image size: 357371407 bytes.
+6m19s       Normal   Created             pod/netdata-deployment-ch-04-11-2026-657599d46f-z4ncq    Container created
+6m19s       Normal   Started             pod/netdata-deployment-ch-04-11-2026-657599d46f-z4ncq    Container started
+6m21s       Normal   SuccessfulCreate    replicaset/netdata-deployment-ch-04-11-2026-657599d46f   Created pod: netdata-deployment-ch-04-11-2026-657599d46f-z4ncq
+6m19s       Normal   Killing             pod/netdata-deployment-ch-04-11-2026-f4f4796c8-jnkwl     Stopping container netdata
+6m19s       Normal   SuccessfulDelete    replicaset/netdata-deployment-ch-04-11-2026-f4f4796c8    Deleted pod: netdata-deployment-ch-04-11-2026-f4f4796c8-jnkwl
+6m21s       Normal   ScalingReplicaSet   deployment/netdata-deployment-ch-04-11-2026              Scaled up replica set netdata-deployment-ch-04-11-2026-657599d46f from 0 to 1
+6m19s       Normal   ScalingReplicaSet   deployment/netdata-deployment-ch-04-11-2026              Scaled down replica set netdata-deployment-ch-04-11-2026-f4f4796c8 from 1 to 0

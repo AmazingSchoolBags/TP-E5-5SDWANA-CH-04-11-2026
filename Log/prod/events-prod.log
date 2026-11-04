@@ -1,0 +1,93 @@
+LAST SEEN   TYPE      REASON                         OBJECT                                                   MESSAGE
+10m         Normal    Scheduled                      pod/interne-deployment-ch-04-11-2026-5958bd7489-hspbx    Successfully assigned prod-ch-04-11-2026/interne-deployment-ch-04-11-2026-5958bd7489-hspbx to minikube
+10m         Normal    Pulled                         pod/interne-deployment-ch-04-11-2026-5958bd7489-hspbx    Container image "randomsi/dashboard-maker:1.1.1" already present on machine and can be accessed by the pod
+10m         Normal    Created                        pod/interne-deployment-ch-04-11-2026-5958bd7489-hspbx    Container created
+10m         Normal    Started                        pod/interne-deployment-ch-04-11-2026-5958bd7489-hspbx    Container started
+10m         Normal    Scheduled                      pod/interne-deployment-ch-04-11-2026-5958bd7489-vc4b8    Successfully assigned prod-ch-04-11-2026/interne-deployment-ch-04-11-2026-5958bd7489-vc4b8 to minikube
+10m         Normal    Pulled                         pod/interne-deployment-ch-04-11-2026-5958bd7489-vc4b8    Container image "randomsi/dashboard-maker:1.1.1" already present on machine and can be accessed by the pod
+10m         Normal    Created                        pod/interne-deployment-ch-04-11-2026-5958bd7489-vc4b8    Container created
+10m         Normal    Started                        pod/interne-deployment-ch-04-11-2026-5958bd7489-vc4b8    Container started
+11m         Normal    Scheduled                      pod/interne-deployment-ch-04-11-2026-5958bd7489-zpqd8    Successfully assigned prod-ch-04-11-2026/interne-deployment-ch-04-11-2026-5958bd7489-zpqd8 to minikube
+10m         Normal    Pulled                         pod/interne-deployment-ch-04-11-2026-5958bd7489-zpqd8    Container image "randomsi/dashboard-maker:1.1.1" already present on machine and can be accessed by the pod
+10m         Normal    Created                        pod/interne-deployment-ch-04-11-2026-5958bd7489-zpqd8    Container created
+10m         Normal    Started                        pod/interne-deployment-ch-04-11-2026-5958bd7489-zpqd8    Container started
+11m         Normal    SuccessfulCreate               replicaset/interne-deployment-ch-04-11-2026-5958bd7489   Created pod: interne-deployment-ch-04-11-2026-5958bd7489-zpqd8
+10m         Normal    SuccessfulCreate               replicaset/interne-deployment-ch-04-11-2026-5958bd7489   Created pod: interne-deployment-ch-04-11-2026-5958bd7489-hspbx
+10m         Normal    SuccessfulCreate               replicaset/interne-deployment-ch-04-11-2026-5958bd7489   Created pod: interne-deployment-ch-04-11-2026-5958bd7489-vc4b8
+10m         Normal    Killing                        pod/interne-deployment-ch-04-11-2026-b6f8f9fb5-6xxjl     Stopping container container-ch-04-11-2026
+10m         Normal    Killing                        pod/interne-deployment-ch-04-11-2026-b6f8f9fb5-cj9v8     Stopping container container-ch-04-11-2026
+10m         Normal    Killing                        pod/interne-deployment-ch-04-11-2026-b6f8f9fb5-ld67k     Stopping container container-ch-04-11-2026
+10m         Normal    SuccessfulDelete               replicaset/interne-deployment-ch-04-11-2026-b6f8f9fb5    Deleted pod: interne-deployment-ch-04-11-2026-b6f8f9fb5-cj9v8
+10m         Normal    SuccessfulDelete               replicaset/interne-deployment-ch-04-11-2026-b6f8f9fb5    Deleted pod: interne-deployment-ch-04-11-2026-b6f8f9fb5-ld67k
+10m         Normal    SuccessfulDelete               replicaset/interne-deployment-ch-04-11-2026-b6f8f9fb5    Deleted pod: interne-deployment-ch-04-11-2026-b6f8f9fb5-6xxjl
+11m         Normal    ScalingReplicaSet              deployment/interne-deployment-ch-04-11-2026              Scaled up replica set interne-deployment-ch-04-11-2026-5958bd7489 from 0 to 1
+10m         Normal    ScalingReplicaSet              deployment/interne-deployment-ch-04-11-2026              Scaled down replica set interne-deployment-ch-04-11-2026-b6f8f9fb5 from 3 to 2
+10m         Normal    ScalingReplicaSet              deployment/interne-deployment-ch-04-11-2026              Scaled up replica set interne-deployment-ch-04-11-2026-5958bd7489 from 1 to 2
+10m         Normal    ScalingReplicaSet              deployment/interne-deployment-ch-04-11-2026              Scaled down replica set interne-deployment-ch-04-11-2026-b6f8f9fb5 from 2 to 1
+10m         Normal    ScalingReplicaSet              deployment/interne-deployment-ch-04-11-2026              Scaled up replica set interne-deployment-ch-04-11-2026-5958bd7489 from 2 to 3
+10m         Normal    ScalingReplicaSet              deployment/interne-deployment-ch-04-11-2026              Scaled down replica set interne-deployment-ch-04-11-2026-b6f8f9fb5 from 1 to 0
+9m20s       Warning   FailedGetResourceMetric        horizontalpodautoscaler/interne-hpa-ch-04-11-2026        failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+9m20s       Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/interne-hpa-ch-04-11-2026        invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+10m         Normal    Killing                        pod/podinfo-deployment-ch-04-11-2026-746dbbc9bb-668jw    Stopping container podinfo-container-ch-04-11-2026
+10m         Normal    Killing                        pod/podinfo-deployment-ch-04-11-2026-746dbbc9bb-97dt4    Stopping container podinfo-container-ch-04-11-2026
+10m         Normal    Killing                        pod/podinfo-deployment-ch-04-11-2026-746dbbc9bb-qfffj    Stopping container podinfo-container-ch-04-11-2026
+10m         Normal    SuccessfulDelete               replicaset/podinfo-deployment-ch-04-11-2026-746dbbc9bb   Deleted pod: podinfo-deployment-ch-04-11-2026-746dbbc9bb-668jw
+10m         Normal    SuccessfulDelete               replicaset/podinfo-deployment-ch-04-11-2026-746dbbc9bb   Deleted pod: podinfo-deployment-ch-04-11-2026-746dbbc9bb-97dt4
+10m         Normal    SuccessfulDelete               replicaset/podinfo-deployment-ch-04-11-2026-746dbbc9bb   Deleted pod: podinfo-deployment-ch-04-11-2026-746dbbc9bb-qfffj
+10m         Normal    Scheduled                      pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-64sr4     Successfully assigned prod-ch-04-11-2026/podinfo-deployment-ch-04-11-2026-c6f5599c4-64sr4 to minikube
+10m         Normal    Pulling                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-64sr4     Pulling image "stefanprodan/podinfo:latest"
+10m         Normal    Pulled                         pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-64sr4     Successfully pulled image "stefanprodan/podinfo:latest" in 1.072s (1.072s including waiting). Image size: 35410630 bytes.
+10m         Normal    Created                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-64sr4     Container created
+10m         Normal    Started                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-64sr4     Container started
+10m         Normal    Scheduled                      pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-mh7jz     Successfully assigned prod-ch-04-11-2026/podinfo-deployment-ch-04-11-2026-c6f5599c4-mh7jz to minikube
+10m         Normal    Pulling                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-mh7jz     Pulling image "stefanprodan/podinfo:latest"
+10m         Normal    Pulled                         pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-mh7jz     Successfully pulled image "stefanprodan/podinfo:latest" in 1.151s (1.151s including waiting). Image size: 35410630 bytes.
+10m         Normal    Created                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-mh7jz     Container created
+10m         Normal    Started                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-mh7jz     Container started
+11m         Normal    Scheduled                      pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-nfkdm     Successfully assigned prod-ch-04-11-2026/podinfo-deployment-ch-04-11-2026-c6f5599c4-nfkdm to minikube
+10m         Normal    Pulling                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-nfkdm     Pulling image "stefanprodan/podinfo:latest"
+10m         Normal    Pulled                         pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-nfkdm     Successfully pulled image "stefanprodan/podinfo:latest" in 1.049s (1.049s including waiting). Image size: 35410630 bytes.
+10m         Normal    Created                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-nfkdm     Container created
+10m         Normal    Started                        pod/podinfo-deployment-ch-04-11-2026-c6f5599c4-nfkdm     Container started
+11m         Normal    SuccessfulCreate               replicaset/podinfo-deployment-ch-04-11-2026-c6f5599c4    Created pod: podinfo-deployment-ch-04-11-2026-c6f5599c4-nfkdm
+10m         Normal    SuccessfulCreate               replicaset/podinfo-deployment-ch-04-11-2026-c6f5599c4    Created pod: podinfo-deployment-ch-04-11-2026-c6f5599c4-mh7jz
+10m         Normal    SuccessfulCreate               replicaset/podinfo-deployment-ch-04-11-2026-c6f5599c4    Created pod: podinfo-deployment-ch-04-11-2026-c6f5599c4-64sr4
+11m         Normal    ScalingReplicaSet              deployment/podinfo-deployment-ch-04-11-2026              Scaled up replica set podinfo-deployment-ch-04-11-2026-c6f5599c4 from 0 to 1
+10m         Normal    ScalingReplicaSet              deployment/podinfo-deployment-ch-04-11-2026              Scaled down replica set podinfo-deployment-ch-04-11-2026-746dbbc9bb from 3 to 2
+10m         Normal    ScalingReplicaSet              deployment/podinfo-deployment-ch-04-11-2026              Scaled up replica set podinfo-deployment-ch-04-11-2026-c6f5599c4 from 1 to 2
+10m         Normal    ScalingReplicaSet              deployment/podinfo-deployment-ch-04-11-2026              Scaled down replica set podinfo-deployment-ch-04-11-2026-746dbbc9bb from 2 to 1
+10m         Normal    ScalingReplicaSet              deployment/podinfo-deployment-ch-04-11-2026              Scaled up replica set podinfo-deployment-ch-04-11-2026-c6f5599c4 from 2 to 3
+10m         Normal    ScalingReplicaSet              deployment/podinfo-deployment-ch-04-11-2026              Scaled down replica set podinfo-deployment-ch-04-11-2026-746dbbc9bb from 1 to 0
+10m         Warning   FailedGetResourceMetric        horizontalpodautoscaler/podinfo-hpa-ch-04-11-2026        failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+10m         Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/podinfo-hpa-ch-04-11-2026        invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+9m20s       Warning   FailedGetResourceMetric        horizontalpodautoscaler/podinfo-hpa-ch-04-11-2026        failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+9m20s       Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/podinfo-hpa-ch-04-11-2026        invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+10m         Normal    Scheduled                      pod/stripe-deployment-ch-04-11-2026-565474986d-78gkb     Successfully assigned prod-ch-04-11-2026/stripe-deployment-ch-04-11-2026-565474986d-78gkb to minikube
+10m         Normal    Pulled                         pod/stripe-deployment-ch-04-11-2026-565474986d-78gkb     Container image "mheib007/stripe-app:v3" already present on machine and can be accessed by the pod
+10m         Normal    Created                        pod/stripe-deployment-ch-04-11-2026-565474986d-78gkb     Container created
+10m         Normal    Started                        pod/stripe-deployment-ch-04-11-2026-565474986d-78gkb     Container started
+10m         Normal    Scheduled                      pod/stripe-deployment-ch-04-11-2026-565474986d-js8h8     Successfully assigned prod-ch-04-11-2026/stripe-deployment-ch-04-11-2026-565474986d-js8h8 to minikube
+10m         Normal    Pulled                         pod/stripe-deployment-ch-04-11-2026-565474986d-js8h8     Container image "mheib007/stripe-app:v3" already present on machine and can be accessed by the pod
+10m         Normal    Created                        pod/stripe-deployment-ch-04-11-2026-565474986d-js8h8     Container created
+10m         Normal    Started                        pod/stripe-deployment-ch-04-11-2026-565474986d-js8h8     Container started
+11m         Normal    Scheduled                      pod/stripe-deployment-ch-04-11-2026-565474986d-rbfqc     Successfully assigned prod-ch-04-11-2026/stripe-deployment-ch-04-11-2026-565474986d-rbfqc to minikube
+10m         Normal    Pulled                         pod/stripe-deployment-ch-04-11-2026-565474986d-rbfqc     Container image "mheib007/stripe-app:v3" already present on machine and can be accessed by the pod
+10m         Normal    Created                        pod/stripe-deployment-ch-04-11-2026-565474986d-rbfqc     Container created
+10m         Normal    Started                        pod/stripe-deployment-ch-04-11-2026-565474986d-rbfqc     Container started
+11m         Normal    SuccessfulCreate               replicaset/stripe-deployment-ch-04-11-2026-565474986d    Created pod: stripe-deployment-ch-04-11-2026-565474986d-rbfqc
+10m         Normal    SuccessfulCreate               replicaset/stripe-deployment-ch-04-11-2026-565474986d    Created pod: stripe-deployment-ch-04-11-2026-565474986d-js8h8
+10m         Normal    SuccessfulCreate               replicaset/stripe-deployment-ch-04-11-2026-565474986d    Created pod: stripe-deployment-ch-04-11-2026-565474986d-78gkb
+10m         Normal    Killing                        pod/stripe-deployment-ch-04-11-2026-586b5d9b68-j7p7t     Stopping container stripe-container-ch-04-11-2026
+10m         Normal    Killing                        pod/stripe-deployment-ch-04-11-2026-586b5d9b68-p5kg5     Stopping container stripe-container-ch-04-11-2026
+10m         Normal    Killing                        pod/stripe-deployment-ch-04-11-2026-586b5d9b68-vh8jw     Stopping container stripe-container-ch-04-11-2026
+10m         Normal    SuccessfulDelete               replicaset/stripe-deployment-ch-04-11-2026-586b5d9b68    Deleted pod: stripe-deployment-ch-04-11-2026-586b5d9b68-vh8jw
+10m         Normal    SuccessfulDelete               replicaset/stripe-deployment-ch-04-11-2026-586b5d9b68    Deleted pod: stripe-deployment-ch-04-11-2026-586b5d9b68-j7p7t
+10m         Normal    SuccessfulDelete               replicaset/stripe-deployment-ch-04-11-2026-586b5d9b68    Deleted pod: stripe-deployment-ch-04-11-2026-586b5d9b68-p5kg5
+11m         Normal    ScalingReplicaSet              deployment/stripe-deployment-ch-04-11-2026               Scaled up replica set stripe-deployment-ch-04-11-2026-565474986d from 0 to 1
+10m         Normal    ScalingReplicaSet              deployment/stripe-deployment-ch-04-11-2026               Scaled down replica set stripe-deployment-ch-04-11-2026-586b5d9b68 from 3 to 2
+10m         Normal    ScalingReplicaSet              deployment/stripe-deployment-ch-04-11-2026               Scaled up replica set stripe-deployment-ch-04-11-2026-565474986d from 1 to 2
+10m         Normal    ScalingReplicaSet              deployment/stripe-deployment-ch-04-11-2026               Scaled down replica set stripe-deployment-ch-04-11-2026-586b5d9b68 from 2 to 1
+10m         Normal    ScalingReplicaSet              deployment/stripe-deployment-ch-04-11-2026               Scaled up replica set stripe-deployment-ch-04-11-2026-565474986d from 2 to 3
+10m         Normal    ScalingReplicaSet              deployment/stripe-deployment-ch-04-11-2026               Scaled down replica set stripe-deployment-ch-04-11-2026-586b5d9b68 from 1 to 0
+9m20s       Warning   FailedGetResourceMetric        horizontalpodautoscaler/stripe-hpa-ch-04-11-2026         failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+9m20s       Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/stripe-hpa-ch-04-11-2026         invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)

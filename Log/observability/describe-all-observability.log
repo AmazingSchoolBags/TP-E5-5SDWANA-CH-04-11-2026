@@ -1,0 +1,162 @@
+Name:             netdata-deployment-ch-04-11-2026-657599d46f-z4ncq
+Namespace:        observability-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 16:16:46 +0100
+Labels:           app=netdata-app-ch-04-11-2026
+                  pod-template-hash=657599d46f
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T16:16:46+01:00
+Status:           Running
+IP:               10.244.0.133
+IPs:
+  IP:           10.244.0.133
+Controlled By:  ReplicaSet/netdata-deployment-ch-04-11-2026-657599d46f
+Containers:
+  netdata:
+    Container ID:   containerd://cb1583627fd236569f2063a039b83a150f85716fc416afa8de92bbd1757c7150
+    Image:          netdata/netdata:latest
+    Image ID:       docker.io/netdata/netdata@sha256:234b72ed75b95ec4f0752c0fd0190825db0d444fc5ee519ccc89dc91274b535c
+    Port:           19999/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 16:16:48 +0100
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:        10m
+      memory:     64Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-xqxfc (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-xqxfc:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:                     netdata-service-ch-04-11-2026
+Namespace:                observability-ch-04-11-2026
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=netdata-app-ch-04-11-2026
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.107.108.221
+IPs:                      10.107.108.221
+Port:                     <unset>  19999/TCP
+TargetPort:               19999/TCP
+NodePort:                 <unset>  31999/TCP
+Endpoints:                10.244.0.133:19999
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+
+
+Name:                   netdata-deployment-ch-04-11-2026
+Namespace:              observability-ch-04-11-2026
+CreationTimestamp:      Wed, 04 Nov 2026 14:07:36 +0100
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 2
+Selector:               app=netdata-app-ch-04-11-2026
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:       app=netdata-app-ch-04-11-2026
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-11-04T16:16:46+01:00
+  Containers:
+   netdata:
+    Image:      netdata/netdata:latest
+    Port:       19999/TCP
+    Host Port:  0/TCP
+    Requests:
+      cpu:         10m
+      memory:      64Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  netdata-deployment-ch-04-11-2026-f4f4796c8 (0/0 replicas created)
+NewReplicaSet:   netdata-deployment-ch-04-11-2026-657599d46f (1/1 replicas created)
+
+
+Name:           netdata-deployment-ch-04-11-2026-657599d46f
+Namespace:      observability-ch-04-11-2026
+Selector:       app=netdata-app-ch-04-11-2026,pod-template-hash=657599d46f
+Labels:         app=netdata-app-ch-04-11-2026
+                pod-template-hash=657599d46f
+Annotations:    deployment.kubernetes.io/desired-replicas: 1
+                deployment.kubernetes.io/max-replicas: 2
+                deployment.kubernetes.io/revision: 2
+Controlled By:  Deployment/netdata-deployment-ch-04-11-2026
+Replicas:       1 current / 1 desired
+Pods Status:    1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:       app=netdata-app-ch-04-11-2026
+                pod-template-hash=657599d46f
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-11-04T16:16:46+01:00
+  Containers:
+   netdata:
+    Image:      netdata/netdata:latest
+    Port:       19999/TCP
+    Host Port:  0/TCP
+    Requests:
+      cpu:         10m
+      memory:      64Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+
+
+Name:           netdata-deployment-ch-04-11-2026-f4f4796c8
+Namespace:      observability-ch-04-11-2026
+Selector:       app=netdata-app-ch-04-11-2026,pod-template-hash=f4f4796c8
+Labels:         app=netdata-app-ch-04-11-2026
+                pod-template-hash=f4f4796c8
+Annotations:    deployment.kubernetes.io/desired-replicas: 1
+                deployment.kubernetes.io/max-replicas: 2
+                deployment.kubernetes.io/revision: 1
+Controlled By:  Deployment/netdata-deployment-ch-04-11-2026
+Replicas:       0 current / 0 desired
+Pods Status:    0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=netdata-app-ch-04-11-2026
+           pod-template-hash=f4f4796c8
+  Containers:
+   netdata:
+    Image:      netdata/netdata:latest
+    Port:       19999/TCP
+    Host Port:  0/TCP
+    Requests:
+      cpu:         10m
+      memory:      64Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>

@@ -1,0 +1,1076 @@
+Name:             interne-deployment-ch-04-11-2026-658d7b75dd-jnc54
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 16:05:29 +0100
+Labels:           app=interne-ch-04-11-2026
+                  pod-template-hash=658d7b75dd
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+Status:           Running
+IP:               10.244.0.110
+IPs:
+  IP:           10.244.0.110
+Controlled By:  ReplicaSet/interne-deployment-ch-04-11-2026-658d7b75dd
+Containers:
+  container-ch-04-11-2026:
+    Container ID:   containerd://4058c3ab3acba72e474bf1bd7baadcf3d6c913084bde56ecbf724ea90b6f6111
+    Image:          randomsi/dashboard-maker:1.1.1
+    Image ID:       docker.io/randomsi/dashboard-maker@sha256:dfc8f6d01ccd545033381471cbc6c3c8b1af94d1e5199745b8ab7f4239b4ade1
+    Port:           5000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 16:05:40 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  128Mi
+    Requests:
+      cpu:        10m
+      memory:     64Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-97kjr (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-97kjr:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             interne-deployment-ch-04-11-2026-658d7b75dd-qkl2r
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 16:05:20 +0100
+Labels:           app=interne-ch-04-11-2026
+                  pod-template-hash=658d7b75dd
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+Status:           Running
+IP:               10.244.0.108
+IPs:
+  IP:           10.244.0.108
+Controlled By:  ReplicaSet/interne-deployment-ch-04-11-2026-658d7b75dd
+Containers:
+  container-ch-04-11-2026:
+    Container ID:   containerd://2480e51ae889c8c1873ad77cacebf1d07990bd3b803dcf58b55cc24c661a1efc
+    Image:          randomsi/dashboard-maker:1.1.1
+    Image ID:       docker.io/randomsi/dashboard-maker@sha256:dfc8f6d01ccd545033381471cbc6c3c8b1af94d1e5199745b8ab7f4239b4ade1
+    Port:           5000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 16:05:29 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  128Mi
+    Requests:
+      cpu:        10m
+      memory:     64Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sf4px (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-sf4px:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             interne-deployment-ch-04-11-2026-658d7b75dd-sdc2x
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 16:05:40 +0100
+Labels:           app=interne-ch-04-11-2026
+                  pod-template-hash=658d7b75dd
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+Status:           Running
+IP:               10.244.0.112
+IPs:
+  IP:           10.244.0.112
+Controlled By:  ReplicaSet/interne-deployment-ch-04-11-2026-658d7b75dd
+Containers:
+  container-ch-04-11-2026:
+    Container ID:   containerd://14eaf8023d552790514085a16bfe13e13002afb4e6372cfc994406a758adcf33
+    Image:          randomsi/dashboard-maker:1.1.1
+    Image ID:       docker.io/randomsi/dashboard-maker@sha256:dfc8f6d01ccd545033381471cbc6c3c8b1af94d1e5199745b8ab7f4239b4ade1
+    Port:           5000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 16:05:52 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  128Mi
+    Requests:
+      cpu:        10m
+      memory:     64Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-clk6b (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-clk6b:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             podinfo-deployment-ch-04-11-2026-6d6c4594b7-9gzhc
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 16:05:20 +0100
+Labels:           app=podinfo-app-ch-04-11-2026
+                  pod-template-hash=6d6c4594b7
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+Status:           Running
+IP:               10.244.0.109
+IPs:
+  IP:           10.244.0.109
+Controlled By:  ReplicaSet/podinfo-deployment-ch-04-11-2026-6d6c4594b7
+Containers:
+  podinfo-container-ch-04-11-2026:
+    Container ID:   containerd://c01d4ce3b0de23617923a838be4f3df28b4a9d3d5132b44a58c2c3ddd9d8979a
+    Image:          stefanprodan/podinfo:latest
+    Image ID:       docker.io/stefanprodan/podinfo@sha256:fa2f27c1a8561097e5144bfc0853eba6054d743b68b03de4cad4675616ddefb0
+    Port:           9898/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 16:05:30 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  64Mi
+    Requests:
+      cpu:        10m
+      memory:     32Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-kkmhb (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-kkmhb:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             podinfo-deployment-ch-04-11-2026-6d6c4594b7-hxvlh
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 16:05:30 +0100
+Labels:           app=podinfo-app-ch-04-11-2026
+                  pod-template-hash=6d6c4594b7
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+Status:           Running
+IP:               10.244.0.111
+IPs:
+  IP:           10.244.0.111
+Controlled By:  ReplicaSet/podinfo-deployment-ch-04-11-2026-6d6c4594b7
+Containers:
+  podinfo-container-ch-04-11-2026:
+    Container ID:   containerd://8dbacb72729cc868e7dac32611c022a458706812505f001b81ac6d768ee691c4
+    Image:          stefanprodan/podinfo:latest
+    Image ID:       docker.io/stefanprodan/podinfo@sha256:fa2f27c1a8561097e5144bfc0853eba6054d743b68b03de4cad4675616ddefb0
+    Port:           9898/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 16:05:42 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  64Mi
+    Requests:
+      cpu:        10m
+      memory:     32Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-892hw (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-892hw:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             podinfo-deployment-ch-04-11-2026-6d6c4594b7-rss54
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 16:05:42 +0100
+Labels:           app=podinfo-app-ch-04-11-2026
+                  pod-template-hash=6d6c4594b7
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+Status:           Running
+IP:               10.244.0.113
+IPs:
+  IP:           10.244.0.113
+Controlled By:  ReplicaSet/podinfo-deployment-ch-04-11-2026-6d6c4594b7
+Containers:
+  podinfo-container-ch-04-11-2026:
+    Container ID:   containerd://f9ef838afa0378f6331a38b206add605d36b7fe741fad9fc77cf4526c7f6e223
+    Image:          stefanprodan/podinfo:latest
+    Image ID:       docker.io/stefanprodan/podinfo@sha256:fa2f27c1a8561097e5144bfc0853eba6054d743b68b03de4cad4675616ddefb0
+    Port:           9898/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 16:05:55 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  64Mi
+    Requests:
+      cpu:        10m
+      memory:     32Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-xhn8q (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-xhn8q:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             stripe-deployment-ch-04-11-2026-55d66d8959-4wgpp
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 15:59:23 +0100
+Labels:           app=stripe-app-ch-04-11-2026
+                  env=preprod-ch-04-11-2026
+                  pod-template-hash=55d66d8959
+                  tier=frontend
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T15:59:22+01:00
+Status:           Running
+IP:               10.244.0.105
+IPs:
+  IP:           10.244.0.105
+Controlled By:  ReplicaSet/stripe-deployment-ch-04-11-2026-55d66d8959
+Containers:
+  stripe-container-ch-04-11-2026:
+    Container ID:   containerd://13968c2d2e2d244a20b4e2a9dc096a633ed4302bb0ff9b737ac746de632b67e4
+    Image:          mheib007/stripe-app:v3
+    Image ID:       docker.io/mheib007/stripe-app@sha256:94a53ba2c3905acd57b13dcca7db2108c3ba558c3b64a0b6255c8be99e04042c
+    Port:           4242/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 15:59:36 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  256Mi
+    Requests:
+      cpu:     10m
+      memory:  128Mi
+    Environment Variables from:
+      stripe-secret-ch-04-11-2026  Secret  Optional: false
+    Environment:                   <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8wzjd (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-8wzjd:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             stripe-deployment-ch-04-11-2026-55d66d8959-qrlhm
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 15:59:36 +0100
+Labels:           app=stripe-app-ch-04-11-2026
+                  env=preprod-ch-04-11-2026
+                  pod-template-hash=55d66d8959
+                  tier=frontend
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T15:59:22+01:00
+Status:           Running
+IP:               10.244.0.106
+IPs:
+  IP:           10.244.0.106
+Controlled By:  ReplicaSet/stripe-deployment-ch-04-11-2026-55d66d8959
+Containers:
+  stripe-container-ch-04-11-2026:
+    Container ID:   containerd://8a4254e370014e324e4da84f70496239435a7ec2d7d7c4fa5cdb2747c814d4ab
+    Image:          mheib007/stripe-app:v3
+    Image ID:       docker.io/mheib007/stripe-app@sha256:94a53ba2c3905acd57b13dcca7db2108c3ba558c3b64a0b6255c8be99e04042c
+    Port:           4242/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 15:59:51 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  256Mi
+    Requests:
+      cpu:     10m
+      memory:  128Mi
+    Environment Variables from:
+      stripe-secret-ch-04-11-2026  Secret  Optional: false
+    Environment:                   <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-hr42d (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-hr42d:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             stripe-deployment-ch-04-11-2026-55d66d8959-svvwl
+Namespace:        preprod-ch-04-11-2026
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 04 Nov 2026 15:59:51 +0100
+Labels:           app=stripe-app-ch-04-11-2026
+                  env=preprod-ch-04-11-2026
+                  pod-template-hash=55d66d8959
+                  tier=frontend
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-11-04T15:59:22+01:00
+Status:           Running
+IP:               10.244.0.107
+IPs:
+  IP:           10.244.0.107
+Controlled By:  ReplicaSet/stripe-deployment-ch-04-11-2026-55d66d8959
+Containers:
+  stripe-container-ch-04-11-2026:
+    Container ID:   containerd://54af9ca0d1ec763c668dae01080d72770d179db1c977f3f66ff1bd64883c0705
+    Image:          mheib007/stripe-app:v3
+    Image ID:       docker.io/mheib007/stripe-app@sha256:94a53ba2c3905acd57b13dcca7db2108c3ba558c3b64a0b6255c8be99e04042c
+    Port:           4242/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 04 Nov 2026 16:00:03 +0100
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     10m
+      memory:  256Mi
+    Requests:
+      cpu:     10m
+      memory:  128Mi
+    Environment Variables from:
+      stripe-secret-ch-04-11-2026  Secret  Optional: false
+    Environment:                   <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mksxm (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-mksxm:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:                     interne-service-ch-04-11-2026
+Namespace:                preprod-ch-04-11-2026
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=interne-ch-04-11-2026
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.100.46.117
+IPs:                      10.100.46.117
+Port:                     <unset>  5000/TCP
+TargetPort:               5000/TCP
+Endpoints:                10.244.0.108:5000,10.244.0.110:5000,10.244.0.112:5000
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+
+
+Name:                     podinfo-service-ch-04-11-2026
+Namespace:                preprod-ch-04-11-2026
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=podinfo-app-ch-04-11-2026
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.106.3.48
+IPs:                      10.106.3.48
+Port:                     <unset>  9898/TCP
+TargetPort:               9898/TCP
+NodePort:                 <unset>  30098/TCP
+Endpoints:                10.244.0.109:9898,10.244.0.111:9898,10.244.0.113:9898
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+
+
+Name:                     stripe-service-ch-04-11-2026
+Namespace:                preprod-ch-04-11-2026
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=stripe-app-ch-04-11-2026
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.102.247.186
+IPs:                      10.102.247.186
+Port:                     <unset>  4242/TCP
+TargetPort:               4242/TCP
+NodePort:                 <unset>  31627/TCP
+Endpoints:                10.244.0.105:4242,10.244.0.106:4242,10.244.0.107:4242
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+
+
+Name:                   interne-deployment-ch-04-11-2026
+Namespace:              preprod-ch-04-11-2026
+CreationTimestamp:      Wed, 04 Nov 2026 11:19:38 +0100
+Labels:                 app=interne-ch-04-11-2026
+Annotations:            deployment.kubernetes.io/revision: 3
+Selector:               app=interne-ch-04-11-2026
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:       app=interne-ch-04-11-2026
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+  Containers:
+   container-ch-04-11-2026:
+    Image:      randomsi/dashboard-maker:1.1.1
+    Port:       5000/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  128Mi
+    Requests:
+      cpu:         10m
+      memory:      64Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  interne-deployment-ch-04-11-2026-6bccbf6dd9 (0/0 replicas created), interne-deployment-ch-04-11-2026-b6f8f9fb5 (0/0 replicas created)
+NewReplicaSet:   interne-deployment-ch-04-11-2026-658d7b75dd (3/3 replicas created)
+
+
+Name:                   podinfo-deployment-ch-04-11-2026
+Namespace:              preprod-ch-04-11-2026
+CreationTimestamp:      Wed, 04 Nov 2026 02:54:15 +0100
+Labels:                 app=podinfo-app-ch-04-11-2026
+Annotations:            deployment.kubernetes.io/revision: 3
+Selector:               app=podinfo-app-ch-04-11-2026
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:       app=podinfo-app-ch-04-11-2026
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+  Containers:
+   podinfo-container-ch-04-11-2026:
+    Image:      stefanprodan/podinfo:latest
+    Port:       9898/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  64Mi
+    Requests:
+      cpu:         10m
+      memory:      32Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  podinfo-deployment-ch-04-11-2026-658586b686 (0/0 replicas created), podinfo-deployment-ch-04-11-2026-746dbbc9bb (0/0 replicas created)
+NewReplicaSet:   podinfo-deployment-ch-04-11-2026-6d6c4594b7 (3/3 replicas created)
+
+
+Name:                   stripe-deployment-ch-04-11-2026
+Namespace:              preprod-ch-04-11-2026
+CreationTimestamp:      Wed, 04 Nov 2026 02:10:11 +0100
+Labels:                 app=stripe-app-ch-04-11-2026
+                        env=preprod-ch-04-11-2026
+                        tier=frontend
+Annotations:            deployment.kubernetes.io/revision: 3
+Selector:               app=stripe-app-ch-04-11-2026
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:       app=stripe-app-ch-04-11-2026
+                env=preprod-ch-04-11-2026
+                tier=frontend
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-11-04T15:59:22+01:00
+  Containers:
+   stripe-container-ch-04-11-2026:
+    Image:      mheib007/stripe-app:v3
+    Port:       4242/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  256Mi
+    Requests:
+      cpu:     10m
+      memory:  128Mi
+    Environment Variables from:
+      stripe-secret-ch-04-11-2026  Secret  Optional: false
+    Environment:                   <none>
+    Mounts:                        <none>
+  Volumes:                         <none>
+  Node-Selectors:                  <none>
+  Tolerations:                     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  stripe-deployment-ch-04-11-2026-57cb78cd84 (0/0 replicas created), stripe-deployment-ch-04-11-2026-586b5d9b68 (0/0 replicas created)
+NewReplicaSet:   stripe-deployment-ch-04-11-2026-55d66d8959 (3/3 replicas created)
+
+
+Name:           interne-deployment-ch-04-11-2026-658d7b75dd
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=interne-ch-04-11-2026,pod-template-hash=658d7b75dd
+Labels:         app=interne-ch-04-11-2026
+                pod-template-hash=658d7b75dd
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 3
+Controlled By:  Deployment/interne-deployment-ch-04-11-2026
+Replicas:       3 current / 3 desired
+Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:       app=interne-ch-04-11-2026
+                pod-template-hash=658d7b75dd
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+  Containers:
+   container-ch-04-11-2026:
+    Image:      randomsi/dashboard-maker:1.1.1
+    Port:       5000/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  128Mi
+    Requests:
+      cpu:         10m
+      memory:      64Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+
+
+Name:           interne-deployment-ch-04-11-2026-6bccbf6dd9
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=interne-ch-04-11-2026,pod-template-hash=6bccbf6dd9
+Labels:         app=interne-ch-04-11-2026
+                pod-template-hash=6bccbf6dd9
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 1
+Controlled By:  Deployment/interne-deployment-ch-04-11-2026
+Replicas:       0 current / 0 desired
+Pods Status:    0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=interne-ch-04-11-2026
+           pod-template-hash=6bccbf6dd9
+  Containers:
+   container-ch-04-11-2026:
+    Image:      randomsi/dashboard-maker:1.1.1
+    Port:       5000/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     150m
+      memory:  128Mi
+    Requests:
+      cpu:         50m
+      memory:      64Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+
+
+Name:           interne-deployment-ch-04-11-2026-b6f8f9fb5
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=interne-ch-04-11-2026,pod-template-hash=b6f8f9fb5
+Labels:         app=interne-ch-04-11-2026
+                pod-template-hash=b6f8f9fb5
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 2
+Controlled By:  Deployment/interne-deployment-ch-04-11-2026
+Replicas:       0 current / 0 desired
+Pods Status:    0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=interne-ch-04-11-2026
+           pod-template-hash=b6f8f9fb5
+  Containers:
+   container-ch-04-11-2026:
+    Image:      randomsi/dashboard-maker:1.1.1
+    Port:       5000/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  128Mi
+    Requests:
+      cpu:         10m
+      memory:      64Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+
+
+Name:           podinfo-deployment-ch-04-11-2026-658586b686
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=podinfo-app-ch-04-11-2026,pod-template-hash=658586b686
+Labels:         app=podinfo-app-ch-04-11-2026
+                pod-template-hash=658586b686
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 1
+Controlled By:  Deployment/podinfo-deployment-ch-04-11-2026
+Replicas:       0 current / 0 desired
+Pods Status:    0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=podinfo-app-ch-04-11-2026
+           pod-template-hash=658586b686
+  Containers:
+   podinfo-container-ch-04-11-2026:
+    Image:      stefanprodan/podinfo:latest
+    Port:       9898/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     150m
+      memory:  64Mi
+    Requests:
+      cpu:         50m
+      memory:      32Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+
+
+Name:           podinfo-deployment-ch-04-11-2026-6d6c4594b7
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=podinfo-app-ch-04-11-2026,pod-template-hash=6d6c4594b7
+Labels:         app=podinfo-app-ch-04-11-2026
+                pod-template-hash=6d6c4594b7
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 3
+Controlled By:  Deployment/podinfo-deployment-ch-04-11-2026
+Replicas:       3 current / 3 desired
+Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:       app=podinfo-app-ch-04-11-2026
+                pod-template-hash=6d6c4594b7
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-11-04T16:05:20+01:00
+  Containers:
+   podinfo-container-ch-04-11-2026:
+    Image:      stefanprodan/podinfo:latest
+    Port:       9898/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  64Mi
+    Requests:
+      cpu:         10m
+      memory:      32Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+
+
+Name:           podinfo-deployment-ch-04-11-2026-746dbbc9bb
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=podinfo-app-ch-04-11-2026,pod-template-hash=746dbbc9bb
+Labels:         app=podinfo-app-ch-04-11-2026
+                pod-template-hash=746dbbc9bb
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 2
+Controlled By:  Deployment/podinfo-deployment-ch-04-11-2026
+Replicas:       0 current / 0 desired
+Pods Status:    0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=podinfo-app-ch-04-11-2026
+           pod-template-hash=746dbbc9bb
+  Containers:
+   podinfo-container-ch-04-11-2026:
+    Image:      stefanprodan/podinfo:latest
+    Port:       9898/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  64Mi
+    Requests:
+      cpu:         10m
+      memory:      32Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+
+
+Name:           stripe-deployment-ch-04-11-2026-55d66d8959
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=stripe-app-ch-04-11-2026,pod-template-hash=55d66d8959
+Labels:         app=stripe-app-ch-04-11-2026
+                env=preprod-ch-04-11-2026
+                pod-template-hash=55d66d8959
+                tier=frontend
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 3
+Controlled By:  Deployment/stripe-deployment-ch-04-11-2026
+Replicas:       3 current / 3 desired
+Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:       app=stripe-app-ch-04-11-2026
+                env=preprod-ch-04-11-2026
+                pod-template-hash=55d66d8959
+                tier=frontend
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-11-04T15:59:22+01:00
+  Containers:
+   stripe-container-ch-04-11-2026:
+    Image:      mheib007/stripe-app:v3
+    Port:       4242/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  256Mi
+    Requests:
+      cpu:     10m
+      memory:  128Mi
+    Environment Variables from:
+      stripe-secret-ch-04-11-2026  Secret  Optional: false
+    Environment:                   <none>
+    Mounts:                        <none>
+  Volumes:                         <none>
+  Node-Selectors:                  <none>
+  Tolerations:                     <none>
+
+
+Name:           stripe-deployment-ch-04-11-2026-57cb78cd84
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=stripe-app-ch-04-11-2026,pod-template-hash=57cb78cd84
+Labels:         app=stripe-app-ch-04-11-2026
+                env=preprod-ch-04-11-2026
+                pod-template-hash=57cb78cd84
+                tier=frontend
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 1
+Controlled By:  Deployment/stripe-deployment-ch-04-11-2026
+Replicas:       0 current / 0 desired
+Pods Status:    0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=stripe-app-ch-04-11-2026
+           env=preprod-ch-04-11-2026
+           pod-template-hash=57cb78cd84
+           tier=frontend
+  Containers:
+   stripe-container-ch-04-11-2026:
+    Image:      mheib007/stripe-app:v3
+    Port:       4242/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     250m
+      memory:  256Mi
+    Requests:
+      cpu:     100m
+      memory:  128Mi
+    Environment Variables from:
+      stripe-secret-ch-04-11-2026  Secret  Optional: false
+    Environment:                   <none>
+    Mounts:                        <none>
+  Volumes:                         <none>
+  Node-Selectors:                  <none>
+  Tolerations:                     <none>
+
+
+Name:           stripe-deployment-ch-04-11-2026-586b5d9b68
+Namespace:      preprod-ch-04-11-2026
+Selector:       app=stripe-app-ch-04-11-2026,pod-template-hash=586b5d9b68
+Labels:         app=stripe-app-ch-04-11-2026
+                env=preprod-ch-04-11-2026
+                pod-template-hash=586b5d9b68
+                tier=frontend
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 2
+Controlled By:  Deployment/stripe-deployment-ch-04-11-2026
+Replicas:       0 current / 0 desired
+Pods Status:    0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=stripe-app-ch-04-11-2026
+           env=preprod-ch-04-11-2026
+           pod-template-hash=586b5d9b68
+           tier=frontend
+  Containers:
+   stripe-container-ch-04-11-2026:
+    Image:      mheib007/stripe-app:v3
+    Port:       4242/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     10m
+      memory:  256Mi
+    Requests:
+      cpu:     10m
+      memory:  128Mi
+    Environment Variables from:
+      stripe-secret-ch-04-11-2026  Secret  Optional: false
+    Environment:                   <none>
+    Mounts:                        <none>
+  Volumes:                         <none>
+  Node-Selectors:                  <none>
+  Tolerations:                     <none>
+
+
+Name:                                                  interne-hpa-ch-04-11-2026
+Namespace:                                             preprod-ch-04-11-2026
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Wed, 04 Nov 2026 11:54:10 +0100
+Reference:                                             Deployment/interne-deployment-ch-04-11-2026
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  10% (1m) / 50%
+Min replicas:                                          3
+Max replicas:                                          20
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 5 seconds
+      - Type: Pods     Value: 4    Period: 5 seconds
+  Scale Down:
+    Stabilization Window: 10 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 50  Period: 5 seconds
+Deployment pods:       3 current / 3 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    ReadyForNewScale  recommended size matches current size
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  True    TooFewReplicas    the desired replica count is less than the minimum replica count
+  ScaledToZero    False   NotScaledToZero   the HPA controller did not scale the workload to zero
+
+
+Name:                                                  podinfo-hpa-ch-04-11-2026
+Namespace:                                             preprod-ch-04-11-2026
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Wed, 04 Nov 2026 11:54:10 +0100
+Reference:                                             Deployment/podinfo-deployment-ch-04-11-2026
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  10% (1m) / 50%
+Min replicas:                                          3
+Max replicas:                                          20
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 5 seconds
+      - Type: Pods     Value: 4    Period: 5 seconds
+  Scale Down:
+    Stabilization Window: 10 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 50  Period: 5 seconds
+Deployment pods:       3 current / 3 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    ReadyForNewScale  recommended size matches current size
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  True    TooFewReplicas    the desired replica count is less than the minimum replica count
+  ScaledToZero    False   NotScaledToZero   the HPA controller did not scale the workload to zero
+
+
+Name:                                                  stripe-hpa-ch-04-11-2026
+Namespace:                                             preprod-ch-04-11-2026
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Wed, 04 Nov 2026 11:54:10 +0100
+Reference:                                             Deployment/stripe-deployment-ch-04-11-2026
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  10% (1m) / 50%
+Min replicas:                                          3
+Max replicas:                                          20
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 5 seconds
+      - Type: Pods     Value: 4    Period: 5 seconds
+  Scale Down:
+    Stabilization Window: 10 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 50  Period: 5 seconds
+Deployment pods:       3 current / 3 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    ReadyForNewScale  recommended size matches current size
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  True    TooFewReplicas    the desired replica count is less than the minimum replica count
+  ScaledToZero    False   NotScaledToZero   the HPA controller did not scale the workload to zero

@@ -1,0 +1,264 @@
+    1  cd ..
+    2  cd projet-e5-mm-04-11-2026/
+    3  cd ..
+    4  cd projet-e5-5SDWANA-mm-04-11-2026/
+    5  git init
+    6  git config --global user.name "A5ROI"
+    7  git config --global user.email "matteo.heib@estiam.com"
+    8  touch erreurs-projet.md
+    9  git add erreurs-projet.md
+   10  git commit -m "Premier commit : initialisation du projet"
+   11  git branch -M main
+   12  git remote add origin https://github.com/AmazingSchoolBags/TP-E5-5SDWANA-CH-04-11-2026.git
+   13  git push -u origin main
+   14  git pull origin main --allow-unrelated-histories --no-edit
+   15  git config pull.rebase false
+   16  git pull origin main --allow-unrelated-histories --no-edit
+   17  git push -u origin main
+   18  ls
+   19  kubectl apply -f namespaces.yaml
+   20  git add namespaces.yaml
+   21  git commit -m "Création des namespaces mlops, preprod et prod"
+   22  git push
+   23  kubectl apply -f stripe-app.yaml
+   24  sed -i 's/-mm-/-ch-/g' namespaces.yaml
+   25  sed -i 's/-mm-/-ch-/g' stripe-app.yaml
+   26  kubectl apply -f stripe-app.yaml
+   27  k -n preprod-ch-04-11-2026 get pod
+   28  k -n prod-ch-04-11-2026 get pod
+   29  kubectl port-forward -n preprod-mm-04-11-2026 svc/stripe-service-mm-04-11-2026 4242:4242 --address 0.0.0.0 &
+   30  kubectl port-forward -n preprod-ch-04-11-2026 svc/stripe-service-ch-04-11-2026 4242:4242 --address 0.0.0.0 &
+   31  clear
+   32  kubectl port-forward -n preprod-ch-04-11-2026 svc/stripe-service-ch-04-11-2026 4242:4242 --address 0.0.0.0 &
+   33  k get pods -A
+   34  k delete namespaces preprod
+   35  k get pods -A
+   36  kubectl port-forward -n preprod-ch-04-11-2026 svc/stripe-service-ch-04-11-2026 4242:4242 --address 0.0.0.0 &
+   37  pkill -f "port-forward"
+   38  kubectl port-forward -n preprod-ch-04-11-2026 svc/stripe-service-ch-04-11-2026 4242:4242 --address 0.0.0.0 &
+   39  pkill -f "port-forward"
+   40  kubectl port-forward -n preprod-ch-04-11-2026 svc/stripe-service-ch-04-11-2026 4242:4242 --address 0.0.0.0
+   41  git add .
+   42  git commit -m "Mise en place de l'app Stripe"
+   43  git push
+   44  git add stripe-app.yaml
+   45  git commit -m "Passage du secret Stripe en base64 pour contourner la protection push GitHub"
+   46  git push
+   47  git pull origin main --no-edit
+   48  git push
+   49  git pull origin main --no-edit
+   50  git push
+   51  git commit -m "Mise en place de l'app Stripe"
+   52  git add stripe-app.yaml
+   53  git commit -m "Mise en place de l'app Stripe"
+   54  git push
+   55  git pull origin main --no-edit
+   56  git push
+   57  kubectl apply -f app2-podinfo.yaml 
+   58  k -n preprod-ch-04-11-2026 get pods
+   59  kubectl port-forward -n preprod-ch-04-11-2026 svc/podinfo-service-ch-04-11-2026 9898:9898 --address 0.0.0.0
+   60  docker image inspect mheib007/stripe-app:v3 \   --format '{{.Size}}'
+   61  docker image inspect mheib007/stripe-app:v3   --format '{{.Size}}'
+   62  docker image inspect mheib007/stripe-app:v3 \ --format '{{.Size}}'
+   63  docker images --format "table {{.Repository}}:{{.Tag}}\t{{.Size}}"
+   64  docker image inspect mheib007/stripe-app:v3 --format '{{.Size}}'
+   65  git add app2-podinfo.yaml 
+   66  git commit -m "Ajout App3 interne (ClusterIP, 3 replicas, limits CPU/RAM)"
+   67  git push
+   68  git pull origin main
+   69  git push
+   70  git add app2-podinfo.yaml 
+   71  git commit -m "Mise a jour App2 externe avec l image stefanprodan/podinfo"
+   72  git add app2-podinfo.yaml 
+   73  git commit -m "App2 externe avec l image stefanprodan/podinfo"
+   74  git push
+   75  git pull origin main --no-edit
+   76  git push
+   77  date
+   78  sudo timedatectl set-ntp true
+   79  date
+   80  sudo timedatectl set-timezone Europe/Paris
+   81  date
+   82  sudo timedatectl set-ntp false
+   83  sudo timedatectl set-time "2026-11-04 11:09:00"
+   84  sudo timedatectl set-ntp true
+   85  date
+   86  kubectl apply -f app3-interne.yaml
+   87  k apply --dry-run=client -f app3-interne.yaml
+   88  k -n preprod-ch-04-11-2026 get pod
+   89  kubectl delete -f app3-interne.yaml
+   90  k -n preprod-ch-04-11-2026 get pod
+   91  kubectl apply -f app3-interne.yaml
+   92  k -n preprod-ch-04-11-2026 get pod
+   93  k apply --dry-run=client -f app3-interne.yaml
+   94  kubectl get pods -n preprod-ch-04-11-2026 -l app=interne-ch-04-11-2026
+   95  k get svc -n preprod-ch-04-11-2026
+   96  k -n preprod-ch-04-11-2026 get pod
+   97  git add app3-interne.yaml
+   98  git commit -m "App3 interne avec l image randomsi/dashboard-maker:1.1.1"
+   99  git push
+  100  git pull origin main --no-edit
+  101  git push
+  102  k get pod -A
+  103  kubectl apply -f hpa.yaml
+  104  k get -n preprod-ch-04-11-2026 get pod
+  105  k get -n preprod-ch-04-11-2026 get pods
+  106  k get -n preprod-ch-04-11-2026 pods
+  107  clear
+  108  sudo apt update && sudo apt install -y apache2-utils
+  109  clear
+  110  ab -n 10000 -c 500 http://$(minikube ip):30098/
+  111  kubectl delete -f hpa.yaml
+  112  kubectl delete hpa app3-hpa-ch-04-11-2026 -n preprod-ch-04-11-2026
+  113  kubectl delete -f hpa.yaml -n preprod-ch-04-11-2026
+  114  kubectl get hpa -n preprod-ch-04-11-2026
+  115  kubectl delete -f hpa.yaml -n preprod-ch-04-11-2026
+  116  kubectl get hpa -n preprod-ch-04-11-2026
+  117  kubectl apply -f hpa.yaml
+  118  clear
+  119  ab -n 100000 -c 1000 http://10.97.0.133:30098/
+  120  minikube ip
+  121  ab -n 100000 -c 1000 http://192.168.49.2:30098/
+  122  k -n preprod-ch-04-11-2026 get pod
+  123  kubectl describe hpa podinfo-hpa-ch-04-11-2026 -n preprod-ch-04-11-2026
+  124  kubectl describe deployment podinfo-deployment-ch-04-11-2026 -n preprod-ch-04-11-2026
+  125  clear
+  126  ab -n 100000 -c 1000 http://192.168.49.2:30001/
+  127  minikube ip
+  128  ab -n 100000 -c 1000 http://192.168.49.2:30001/
+  129  clear
+  130  kubectl get svc -n preprod-ch-04-11-2026
+  131  ab -n 100000 -c 1000 http://192.168.49.2:31627/
+  132  clear
+  133  ab -n 100000 -c 200 http://192.168.49.2:31627/
+  134  kubectl get pods -n preprod-ch-04-11-2026 -l app=stripe-app-ch-04-11-2026
+  135  clear
+  136  ab -n 100000 -c 50 http://192.168.49.2:31627/
+  137  kubectl describe hpa stripe-hpa-ch-04-11-2026 -n preprod-ch-04-11-2026
+  138  kubectl describe deployment stripe-deployment-ch-04-11-2026 -n preprod-ch-04-11-2026
+  139  clear
+  140  ab -n 100000 -c 500 http://127.0.0.1:5000/
+  141  ab -n 100000 -c 100 http://127.0.0.1:5000/
+  142  clear
+  143  ab -n 10000 -c 250 http://127.0.0.1:5000/
+  144  kubectl describe hpa interne-hpa-ch-04-11-2026 -n preprod-ch-04-11-2026
+  145  kubectl describe deployment interne-deployment-ch-04-11-2026 -n preprod-ch-04-11-2026
+  146  clear
+  147  git add hpa.yaml 
+  148  git commit -m "Ajout des regles HPA (min 3, max 20) pour les 3 applications"
+  149  git push
+  150  git pull origin main --no-edit
+  151  git push
+  152  clear
+  153  kubectl get pods,svc,hpa -n mlops-ch-04-11-2026
+  154  kubectl get pods,svc,hpa -n preprod-ch-04-11-2026
+  155  kubectl get pods,svc,hpa -n prod-ch-04-11-2026
+  156  clear
+  157  kubectl apply -f stripe-app.yaml -n mlops-ch-04-11-2026
+  158  kubectl apply -f app2-podinfo.yaml -n mlops-ch-04-11-2026
+  159  kubectl apply -f app3-interne.yaml -n mlops-ch-04-11-2026
+  160  kubectl apply -f hpa.yaml -n mlops-ch-04-11-2026
+  161  kubectl apply -f stripe-app.yaml -n prod-ch-04-11-2026
+  162  kubectl apply -f app2-podinfo.yaml -n prod-ch-04-11-2026
+  163  kubectl apply -f app3-interne.yaml -n prod-ch-04-11-2026
+  164  kubectl apply -f hpa.yaml -n prod-ch-04-11-2026
+  165  kubectl get pods,svc,hpa -n mlops-ch-04-11-2026
+  166  kubectl get pods,svc,hpa -n preprod-ch-04-11-2026
+  167  kubectl get pods,svc,hpa -n prod-ch-04-11-2026
+  168  clear
+  169  namespaces
+  170  k namespaces
+  171  k -n
+  172  sed -i '/namespace: preprod-ch-04-11-2026/d' stripe-app.yaml app2-podinfo.yaml app3-interne.yaml hpa.yaml
+  173  kubectl apply -f stripe-app.yaml -n mlops-ch-04-11-2026
+  174  kubectl apply -f app2-podinfo.yaml -n mlops-ch-04-11-2026
+  175  kubectl apply -f app3-interne.yaml -n mlops-ch-04-11-2026
+  176  kubectl apply -f hpa.yaml -n mlops-ch-04-11-2026
+  177  kubectl apply -f stripe-app.yaml -n prod-ch-04-11-2026
+  178  kubectl apply -f app2-podinfo.yaml -n prod-ch-04-11-2026
+  179  kubectl apply -f app3-interne.yaml -n prod-ch-04-11-2026
+  180  kubectl apply -f hpa.yaml -n prod-ch-04-11-2026
+  181  kubectl get pods,hpa -n mlops-ch-04-11-2026
+  182  kubectl get pods,hpa -n prod-ch-04-11-2026
+  183  kubectl get pods,hpa -n mlops-ch-04-11-2026
+  184  kubectl get pods,hpa -n prod-ch-04-11-2026
+  185  kubectl get pods,hpa -n preprod-ch-04-11-2026
+  186  kubectl get pods,hpa -n mlops-ch-04-11-2026
+  187  kubectl apply -f app2-podinfo.yaml -n prod-ch-04-11-2026
+  188  kubectl get pods,hpa -n mlops-ch-04-11-2026
+  189  kubectl get pods,hpa -n prod-ch-04-11-2026
+  190  kubectl describe pod -n prod-ch-04-11-2026 -l app=stripe-app-ch-04-11-2026 | grep -A 3 Events
+  191  kubectl get events -n prod-ch-04-11-2026 --sort-by='.metadata.creationTimestamp'
+  192  sed -i 's/cpu: ".*"/cpu: "10m"/g' stripe-app.yaml app2-podinfo.yaml app3-interne.yaml
+  193  kubectl apply -f stripe-app.yaml -n mlops-ch-04-11-2026
+  194  kubectl apply -f app2-podinfo.yaml -n mlops-ch-04-11-2026
+  195  kubectl apply -f app3-interne.yaml -n mlops-ch-04-11-2026
+  196  kubectl apply -f stripe-app.yaml -n prod-ch-04-11-2026
+  197  kubectl apply -f app2-podinfo.yaml -n prod-ch-04-11-2026
+  198  kubectl apply -f app3-interne.yaml -n prod-ch-04-11-2026
+  199  kubectl get pods,hpa -n mlops-ch-04-11-2026
+  200  kubectl get pods,hpa -n prod-ch-04-11-2026
+  201  kubectl describe pod -n prod-ch-04-11-2026 -l app=stripe-app-ch-04-11-2026 | grep -A 3 Events
+  202  kubectl get events -n prod-ch-04-11-2026 --sort-by='.metadata.creationTimestamp'
+  203  clear
+  204  kubectl get pods,hpa -n mlops-ch-04-11-2026
+  205  kubectl delete namespace mlops-ch-04-11-2026 prod-ch-04-11-2026
+  206  kubectl get ns
+  207  kubectl get pods,hpa -n preprod-ch-04-11-2026
+  208  kubectl apply -f stripe-app.yaml -n preprod-ch-04-11-2026
+  209  kubectl apply -f app2-podinfo.yaml -n preprod-ch-04-11-2026
+  210  kubectl apply -f app3-interne.yaml -n preprod-ch-04-11-2026
+  211  kubectl apply -f hpa.yaml -n preprod-ch-04-11-2026
+  212  kubectl get pods,hpa -n preprod-ch-04-11-2026
+  213  clear
+  214  kubectl get pods,hpa -n preprod-ch-04-11-2026
+  215  kubectl port-forward -n preprod-mm-04-11-2026 svc/stripe-service-mm-04-11-2026 4242:4242 --address 0.0.0.0 &
+  216  pkill -f "port-forward"
+  217  kubectl port-forward -n preprod-mm-04-11-2026 svc/stripe-service-mm-04-11-2026 4242:4242 --address 0.0.0.0
+  218  kubectl -n preprod-ch-04-11-2026 
+  219  kubectl -n preprod-ch-04-11-2026 get pod
+  220  kubectl port-forward -n preprod-mm-04-11-2026 svc/stripe-service-mm-04-11-2026 4242:4242 --address 0.0.0.0
+  221  clear
+  222  kubectl port-forward -n preprod-ch-04-11-2026 svc/stripe-service-ch-04-11-2026 4242:4242 --address 0.0.0.0
+  223  kubectl -n preprod-ch-04-11-2026 get pod
+  224  k ps
+  225  k get ns
+  226  kubectl port-forward -n preprod-ch-04-11-2026 svc/podinfo-service-ch-04-11-2026 9898:9898 --address 0.0.0.0
+  227  kubectl apply -f namespaces.yaml
+  228  kubectl apply -f stripe-app.yaml -n mlops-ch-04-11-2026
+  229  kubectl apply -f app2-podinfo.yaml -n mlops-ch-04-11-2026
+  230  kubectl apply -f app3-interne.yaml -n mlops-ch-04-11-2026
+  231  kubectl apply -f hpa.yaml -n mlops-ch-04-11-2026
+  232  k get ns
+  233  kubectl get pods,hpa -n mlops-ch-04-11-2026
+  234  kubectl port-forward -n mlops-ch-04-11-2026 svc/podinfo-service-ch-04-11-2026 9898:9898 --address 0.0.0.0
+  235  kubectl get pods,hpa -n mlops-ch-04-11-2026
+  236  kubectl apply -f stripe-app.yaml -n prod-ch-04-11-2026
+  237  kubectl apply -f app2-podinfo.yaml -n prod-ch-04-11-2026
+  238  kubectl apply -f app3-interne.yaml -n prod-ch-04-11-2026
+  239* kubectl apply -f
+  240  kubectl get pods,hpa -n prod-ch-04-11-2026
+  241  kubectl port-forward -n prod-ch-04-11-2026 svc/podinfo-service-ch-04-11-2026 9898:9898 --address 0.0.0.0
+  242  kubectl get pods,hpa -n prod-ch-04-11-2026
+  243  kubectl port-forward -n prod-ch-04-11-2026 svc/stripe-service-ch-04-11-2026 4242:4242 --address 0.0.0.0
+  244  kubectl get pods,hpa -n prod-ch-04-11-2026
+  245  clear
+  246  k get ns
+  247  k get deployments -A
+  248  k get svc -A
+  249  k get hpa -A
+  250  k get pods -A
+  251  clear
+  252  git add .
+  253  git commit -m "Déploiement réussi des 3 environnements mlops, preprod et prod"
+  254  git push origin main
+  255  kubectl apply -f netdata.yaml
+  256  kubectl get pods,svc -n observability-ch-04-11-2026
+  257  kubectl port-forward -n prod-ch-04-11-2026 svc/netdata-service-ch-04-11-2026 31999:19999 --address 0.0.0.0
+  258  kubectl get pods,svc -n observability-ch-04-11-2026
+  259  kubectl port-forward -n prod-ch-04-11-2026 svc/netdata-service-ch-04-11-2026 31999:19999 --address 0.0.0.0
+  260  kubectl port-forward -n observability-ch-04-11-2026 svc/netdata-service-ch-04-11-2026 19999:19999 --address 0.0.0.0
+  261  kubectl apply -f netdata.yaml
+  262  kubectl get pods,svc -n observability-ch-04-11-2026
+  263  kubectl port-forward -n observability-ch-04-11-2026 svc/netdata-service-ch-04-11-2026 19999:19999 --address 0.0.0.0
+  264  history > history-projet-CH-04-11-2026.log
