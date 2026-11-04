@@ -21,7 +21,84 @@ Nous utilisons **GitHub** pour conserver notre travail, nos fichiers YAML et les
 Nous avons choisi **Dashboard Maker** plutôt que phpMyAdmin pour éviter d'ajouter une base MySQL et d'autres services. Son fonctionnement avec plusieurs pods sera vérifié pendant le TP, notamment parce qu'il conserve certaines données localement.
 
 Les images sont nos **références de départ**. Le sujet demandant une empreinte dans les noms des composants, nous prévoirons les noms des ressources et des images publiées avec `ch-04-11-2026`.
+---
 
+## 🏗️ Architecture du projet
+
+Le projet repose sur trois environnements Kubernetes :
+**mlops**, **preprod** et **prod**.
+
+Chaque environnement héberge trois applications avec
+un HPA permettant de passer de 3 à 20 pods.
+
+```mermaid
+flowchart TB
+    USER["Utilisateur externe"]
+    K6["k6 - Tests de charge"]
+
+    subgraph CLUSTER["Cluster Kubernetes"]
+        METRICS["Metrics Server"]
+
+        subgraph MLOPS["Namespace mlops"]
+            M1["Flask Stripe - NodePort<br/>3 à 20 pods"]
+            M2["Podinfo Go - NodePort<br/>3 à 20 pods"]
+            M3["Dashboard Maker - ClusterIP<br/>3 à 20 pods"]
+        end
+
+        subgraph PREPROD["Namespace preprod"]
+            P1["Flask Stripe - NodePort<br/>3 à 20 pods"]
+            P2["Podinfo Go - NodePort<br/>3 à 20 pods"]
+            P3["Dashboard Maker - ClusterIP<br/>3 à 20 pods"]
+        end
+
+        subgraph PROD["Namespace prod"]
+            R1["Flask Stripe - NodePort<br/>3 à 20 pods"]
+            R2["Podinfo Go - NodePort<br/>3 à 20 pods"]
+            R3["Dashboard Maker - ClusterIP<br/>3 à 20 pods"]
+        end
+
+        NET["Netdata - Observabilité"]
+    end
+
+    subgraph STRIPE["Plateforme Stripe"]
+        API["API Stripe"]
+        CHECKOUT["Stripe Checkout"]
+        DASH["Dashboard Stripe"]
+    end
+
+    USER --> P1
+    USER --> P2
+    USER -.-> M1 & M2
+    USER -.-> R1 & R2
+
+    P1 -->|"Créer une session"| API
+    USER -->|"Paiement sécurisé"| CHECKOUT
+    CHECKOUT --> API
+    API --> DASH
+    CHECKOUT -.->|"Retour utilisateur"| USER
+
+    M1 -.-> API
+    R1 -.-> API
+
+    K6 -.-> CLUSTER
+    METRICS -.-> MLOPS
+    METRICS -.-> PREPROD
+    METRICS -.-> PROD
+
+    CLUSTER -.-> NET
+```
+
+### Fonctionnement
+
+- **NodePort** : accès externe aux applications Stripe et Podinfo.
+- **ClusterIP** : accès interne à Dashboard Maker.
+- **HPA** : adaptation automatique entre 3 et 20 replicas.
+- **Metrics Server** : récupération de la consommation CPU.
+- **k6** : génération de charge HTTP.
+- **Netdata** : visualisation des performances.
+- **Stripe Checkout** : réalisation et vérification des paiements tests.
+
+---
 ## Organisation Kubernetes
 
 Nous devons déployer les mêmes applications dans **trois environnements** :
