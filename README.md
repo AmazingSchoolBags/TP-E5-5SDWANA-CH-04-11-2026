@@ -87,6 +87,31 @@ flowchart TB
 
     CLUSTER -.-> NET
 ```
+### Application 1 : Stripe Checkout
+
+**Statut : premier paiement de test validé**
+
+L'application Stripe Checkout permet de simuler des paiements en ligne depuis notre environnement Kubernetes.
+
+Nous utilisons l'exemple Stripe adapté et conteneurisé par Mattéo, avec l'image Docker `mheib007/stripe-app:v3`.
+
+**Configuration Kubernetes :**
+
+- Namespace : `preprod-ch-04-11-2026`
+- Deployment : `stripe-deployment-ch-04-11-2026`
+- Service : `LoadBalancer`, port `4242`
+- Nombre de replicas initial : 3
+- Configuration : Secret Kubernetes contenant les clés API Stripe et l'identifiant du prix
+- Ressources : 100m CPU et 128 MiB de RAM demandés par conteneur
+
+**Résultats des premiers tests :**
+
+L'application est accessible depuis le poste de test grâce à un transfert de port Kubernetes. Un paiement fictif de **250 €** a été effectué avec succès et confirmé dans le Dashboard Stripe.
+
+Le HPA, les tests de charge et la reproduction dans les autres namespaces restent à réaliser.
+
+[Consulter les captures et les résultats du test Stripe](captures/App-Stripe/README.md)
+
 
 ### Fonctionnement
 
