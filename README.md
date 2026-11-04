@@ -138,6 +138,18 @@ Les tests HPA et k6 restent à réaliser.
 
 [Consulter les captures et résultats Podinfo](App-Podinfo/README.md)
 
+### Application 3 : Dashboard Maker (Flask)
+
+**Statut : accès interne et test HTTP validés**
+
+Notre troisième application utilise un Service Kubernetes de type **ClusterIP**, sur le port `5000`, dans le namespace `preprod-ch-04-11-2026`.
+
+Nous avons vérifié l'accessibilité du service depuis Minikube avec une requête HTTP ayant retourné le code **200 OK**.
+
+Les vérifications des replicas, du HPA et les tests de charge restent à effectuer.
+
+[Consulter les captures et résultats Dashboard Maker](App-Dashboard/README.md)
+
 ### Fonctionnement
 
 - **NodePort** : accès externe aux applications Stripe et Podinfo.
