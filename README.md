@@ -258,8 +258,8 @@ Nous avons travaillé ensemble sur les vérifications et la préparation de l'or
 - [x] Tests de charge **ApacheBench** et montée/descente des replicas observées dans Preprod.
 - [x] Architecture Mermaid et captures des principales validations ajoutées.
 - [x] Observabilité avec interface web installée et validée.
-- [ ] Vérification finale de la conformité des images et de l'accès LoadBalancer.
-- [ ] Logs, historique des commandes et rapports individuels finalisés.
+- [x] Vérification finale de la conformité des images et de l'accès LoadBalancer.
+- [x] Logs, historique des commandes et rapports individuels finalisés.
 
 Nous effectuons des **commits réguliers et explicites**, afin de conserver l'historique des essais, des modifications et des corrections.
 
