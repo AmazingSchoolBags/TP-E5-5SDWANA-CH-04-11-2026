@@ -22,7 +22,19 @@ Nous avons choisi **Dashboard Maker** plutôt que phpMyAdmin pour éviter d'ajou
 
 Les images sont nos **références de départ**. Le sujet demandant une empreinte dans les noms des composants, nous prévoirons les noms des ressources et des images publiées avec `ch-04-11-2026`.
 ---
+### Choix et taille des images Docker
 
+Nous avons privilégié des **images Docker légères, simples à déployer et adaptées aux besoins du TP**, afin de limiter la consommation des ressources de Minikube et de consacrer davantage de temps aux tests Kubernetes.
+
+| Application | Image Docker | Taille | Justification du choix |
+|---|---|---|---|
+| **Stripe Checkout** | `mheib007/stripe-app:v3` | 61,31 Mo* | Application de paiement Stripe, simple à tester. |
+| **Podinfo** | `stefanprodan/podinfo:6.17.0` | ≈ 34 Mo** | Application Go légère, adaptée aux tests Kubernetes. |
+| **Dashboard Maker** | `randomsi/dashboard-maker:1.1.1` | ≈ 47 Mo** | Interface Flask sans base de données externe. |
+
+* Taille locale non compressée, vérifiée avec `docker image inspect`.
+** Tailles compressées indiquées sur Docker Hub, à ne pas comparer directement à la taille locale Stripe.
+  
 ## 🏗️ Architecture du projet
 
 Le projet repose sur trois environnements Kubernetes :
