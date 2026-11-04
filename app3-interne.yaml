@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: interne-deployment-ch-04-11-2026
+  namespace: preprod-ch-04-11-2026
+  labels:
+    app: interne-ch-04-11-2026
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: interne-ch-04-11-2026
+  template:
+    metadata:
+      labels:
+        app: interne-ch-04-11-2026
+    spec:
+      containers:
+        - name: container-ch-04-11-2026
+          image: randomsi/dashboard-maker:1.1.1
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "150m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: interne-service-ch-04-11-2026
+  namespace: preprod-ch-04-11-2026
+spec:
+  type: ClusterIP
+  selector:
+    app: interne-ch-04-11-2026
+  ports:
+    - port: 5000
+      targetPort: 5000
