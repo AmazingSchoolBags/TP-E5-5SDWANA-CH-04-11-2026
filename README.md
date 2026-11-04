@@ -152,6 +152,49 @@ La commande `kubectl get pods -n preprod-ch-04-11-2026` montre que les **9 pods 
 
 ![Vérification des neuf pods dans Preprod](captures/pods-preprod-9-running.png)
 
+### Validation des trois environnements Kubernetes
+
+Nous avons déployé les trois applications dans les environnements **mlops**, **preprod** et **prod**.
+
+Afin de tenir compte des ressources matérielles disponibles sur notre machine Minikube, nous avons ajusté les ressources CPU des conteneurs et laissé Kubernetes attribuer automatiquement les ports NodePort.
+
+**Résultats des vérifications :**
+
+| Environnement | Deployments | Pods opérationnels | HPA |
+|---|---|---|---|
+| `mlops-ch-04-11-2026` | 3/3 | 9/9 | 3 |
+| `preprod-ch-04-11-2026` | 3/3 | 9/9 | 3 |
+| `prod-ch-04-11-2026` | 3/3 | 9/9 | 3 |
+| **Total** | **9/9** | **27/27** | **9** |
+
+Les 27 pods sont en état `Running`, avec `1/1 Ready` et aucun redémarrage.
+
+Chaque HPA est configuré avec un minimum de **3 pods**, un maximum de **20 pods** et une cible CPU de **50 %**.
+
+### Captures de validation
+
+**Les trois namespaces actifs**
+
+![Namespaces Kubernetes](captures/trois-environnements/namespaces.png)
+
+**Les neuf Deployments disponibles**
+
+![Deployments Kubernetes](captures/trois-environnements/deployments.png)
+
+**Les Services des trois environnements**
+
+![Services Kubernetes](captures/trois-environnements/services.png)
+
+**Les neuf HPA configurés**
+
+![HPA Kubernetes](captures/trois-environnements/hpa.png)
+
+**Les 27 pods opérationnels**
+
+![Pods Kubernetes](captures/trois-environnements/pods.png)
+
+Ces résultats confirment le bon déploiement des trois applications dans chaque environnement. Les tests de montée et de descente en charge sont documentés séparément dans les dossiers des applications.
+
 ## Organisation Kubernetes et tests restants
 
 Nous devons reproduire les mêmes applications dans les trois environnements **`mlops`**, **`preprod`** et **`prod`**, avec des noms de ressources utilisant l'empreinte `ch-04-11-2026`.
