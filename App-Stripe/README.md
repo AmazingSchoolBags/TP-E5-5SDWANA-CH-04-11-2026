@@ -38,6 +38,47 @@ Cette application permet de simuler un achat en ligne à l'aide de **Stripe Chec
 
 Le **parcours de paiement Stripe en environnement de test fonctionne** : l'application est joignable, la transaction de 250 € est confirmée sur Stripe et une page de confirmation s'affiche.
 
-Ces captures ne démontrent **pas encore** le fonctionnement des trois replicas, du HPA ou le déploiement dans les trois namespaces. Ces points seront validés séparément pendant le TP.
-
 [Retour au README principal](../../README.md)
+
+### Test de charge et autoscaling HPA
+
+Nous avons réalisé un test de charge sur notre application Stripe Checkout avec **ApacheBench**, afin de vérifier le fonctionnement de l'autoscaling Kubernetes.
+
+Le HPA a été configuré avec un minimum de **3 pods**, un maximum de **20 pods** et une cible d'utilisation CPU de **50 %**.
+
+**Résultats du test :**
+
+| Indicateur | Résultat |
+|---|---|
+| Outil utilisé | ApacheBench (`ab`) |
+| Requêtes prévues | 100 000 |
+| Connexions simultanées | 50 |
+| Requêtes effectuées avant erreur | 20 638 |
+| CPU observé par le HPA | Jusqu'à 120 % |
+| Replicas au départ | 3 |
+| Maximum observé | 7 |
+| Replicas après le test | 3 |
+
+Pendant le test, le HPA a détecté une augmentation de la consommation CPU et a automatiquement augmenté le nombre de replicas jusqu'à **7 pods**.
+
+Après la diminution de la charge, Kubernetes est revenu à **3 replicas**.
+
+Les événements `SuccessfulRescale` et `ScalingReplicaSet` confirment le fonctionnement de l'autoscaling horizontal.
+
+**Difficulté rencontrée :** le test ApacheBench s'est interrompu avec une erreur `Connection refused` après 20 638 requêtes. Le test de charge n'a donc pas été entièrement terminé, mais les événements Kubernetes permettent de confirmer le fonctionnement du HPA.
+
+#### Captures des résultats
+
+**Test de charge ApacheBench et surveillance du HPA**
+
+![Test de charge Stripe](test-charge-hpa.png)
+
+**Événements de scaling du HPA**
+
+![Événements HPA Stripe](evenements-hpa.png)
+
+**Évolution des replicas du Deployment**
+
+![Scaling du Deployment Stripe](scaling-deployment.png)
+
+Ce test démontre que Kubernetes peut adapter automatiquement le nombre de pods Stripe en fonction de leur consommation CPU.
