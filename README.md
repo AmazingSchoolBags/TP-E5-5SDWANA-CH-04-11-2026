@@ -87,6 +87,11 @@ flowchart TB
 
     CLUSTER -.-> NET
 ```
+### Application 1 : Stripe Checkout
+
+✅ Paiement de test de 250 € validé.
+
+[Voir la présentation et les captures Stripe](captures/App-Stripe/README.md)
 
 ### Fonctionnement
 
