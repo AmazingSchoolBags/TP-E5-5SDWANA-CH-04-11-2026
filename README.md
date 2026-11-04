@@ -124,6 +124,19 @@ Le HPA, les tests de charge et la reproduction dans les autres namespaces resten
 
 [Consulter les captures et les résultats du test Stripe](captures/App-Stripe/README.md)
 
+### Application 2 : Podinfo (Go)
+
+**Statut : application accessible et test HTTP validé**
+
+L'application Podinfo v6.17.0 a été déployée sur Minikube dans l'environnement `preprod-ch-04-11-2026`.
+
+Nous avons vérifié son fonctionnement depuis un navigateur et effectué un test HTTP depuis Windows, avec une réponse **200 OK**.
+
+L'accès a été testé avec un transfert de port Kubernetes sur le port `9898`.
+
+Les tests HPA et k6 restent à réaliser.
+
+[Consulter les captures et résultats Podinfo](App-Podinfo/README.md)
 
 ### Fonctionnement
 
