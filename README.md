@@ -150,6 +150,25 @@ Les vérifications des replicas, du HPA et les tests de charge restent à effect
 
 [Consulter les captures et résultats Dashboard Maker](App-Dashboard/README.md)
 
+### Vérification des replicas dans Preprod
+
+Nous avons vérifié le déploiement des trois applications dans le namespace `preprod-ch-04-11-2026`.
+
+La commande `kubectl get pods` confirme que les **9 pods sont opérationnels**, avec le statut `Running`, `1/1 Ready` et aucun redémarrage.
+
+| Application | Replicas | État |
+|---|---|---|
+| Stripe Checkout | 3/3 | Running |
+| Podinfo | 3/3 | Running |
+| Dashboard Maker | 3/3 | Running |
+| **Total** | **9/9** | **Opérationnel** |
+
+**Capture de vérification :**
+
+![Vérification des 9 pods dans Preprod](captures/pods-preprod-9-running.png)
+
+Cette vérification confirme que les trois applications sont déployées avec le nombre initial de replicas demandé dans le TP.
+
 ### Fonctionnement
 
 - **NodePort** : accès externe aux applications Stripe et Podinfo.
