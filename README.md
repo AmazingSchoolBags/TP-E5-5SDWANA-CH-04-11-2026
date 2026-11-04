@@ -260,7 +260,6 @@ Nous avons travaillé ensemble sur les vérifications et la préparation de l'or
 - [x] Observabilité avec interface web installée et validée.
 - [ ] Vérification finale de la conformité des images et de l'accès LoadBalancer.
 - [ ] Logs, historique des commandes et rapports individuels finalisés.
-- [ ] Oral préparé.
 
 Nous effectuons des **commits réguliers et explicites**, afin de conserver l'historique des essais, des modifications et des corrections.
 
