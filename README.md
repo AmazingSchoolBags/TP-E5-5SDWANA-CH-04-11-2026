@@ -6,76 +6,71 @@
 
 ## Présentation
 
-Le but du TP est de déployer **trois applications** dans Kubernetes pour réaliser un petit environnement de démonstration (*MVP*). Une application doit permettre de tester un paiement avec **Stripe**.
+Le but du TP est de déployer **trois applications** dans Kubernetes pour réaliser un environnement de démonstration (*MVP*), dont une application permettant de tester un paiement avec **Stripe**.
 
-Nous utilisons **GitHub** pour conserver notre travail, nos fichiers YAML et les différentes étapes du projet. Les déploiements et les résultats seront ajoutés progressivement : ils ne sont pas encore tous réalisés.
+Nous utilisons **GitHub** pour conserver les fichiers YAML, expliquer nos choix et suivre l'avancement du projet grâce à des commits réguliers. Les trois applications fonctionnent déjà dans **Preprod** ; les autres environnements et les tests d'autoscaling seront documentés au fur et à mesure.
 
 ## Applications choisies
 
-| Application | Image ou source | Accès | Pourquoi ce choix ? |
+| Application | Image Docker | Accès prévu | Pourquoi ce choix ? |
 |---|---|---|---|
-| **Stripe Checkout** | [Exemple officiel Stripe (Python)](https://github.com/stripe-samples/checkout-one-time-payments) | Externe | Réaliser un paiement fictif et vérifier sa présence dans le Dashboard Stripe. Une image sera construite et publiée sur Docker Hub. |
-| **Podinfo** | [`stefanprodan/podinfo:6.17.0`](https://hub.docker.com/r/stefanprodan/podinfo) | Externe | Petite application en **Go**, conçue pour être testée facilement avec Kubernetes. |
-| **Dashboard Maker** | [`randomsi/dashboard-maker:1.1.1`](https://hub.docker.com/r/randomsi/dashboard-maker) | Interne | Tableau de bord en **Flask**, avec une interface agréable, léger et sans base MySQL à installer. |
+| **Stripe Checkout** | `mheib007/stripe-app:v3` | Externe : `LoadBalancer` | Application issue d'un exemple Stripe, adaptée et conteneurisée par Mattéo pour tester un paiement fictif. |
+| **Podinfo** | [`stefanprodan/podinfo:6.17.0`](https://hub.docker.com/r/stefanprodan/podinfo) | Externe : `NodePort` | Application légère en **Go**, pratique pour les tests Kubernetes. |
+| **Dashboard Maker** | [`randomsi/dashboard-maker:1.1.1`](https://hub.docker.com/r/randomsi/dashboard-maker) | Interne : `ClusterIP` | Tableau de bord en **Flask**, avec une interface web et sans base MySQL externe. |
 
-Nous avons choisi **Dashboard Maker** plutôt que phpMyAdmin pour éviter d'ajouter une base MySQL et d'autres services. Son fonctionnement avec plusieurs pods sera vérifié pendant le TP, notamment parce qu'il conserve certaines données localement.
+Nous avons choisi **Dashboard Maker** plutôt que phpMyAdmin pour éviter de déployer une base MySQL et des services supplémentaires. L'application conserve certaines données localement : il faudra en tenir compte avec plusieurs replicas.
 
-Les images sont nos **références de départ**. Le sujet demandant une empreinte dans les noms des composants, nous prévoirons les noms des ressources et des images publiées avec `ch-04-11-2026`.
----
 ### Choix et taille des images Docker
 
-Nous avons privilégié des **images Docker légères, simples à déployer et adaptées aux besoins du TP**, afin de limiter la consommation des ressources de Minikube et de consacrer davantage de temps aux tests Kubernetes.
+Nous avons recherché des **images plutôt légères et simples à déployer**, pour consacrer davantage de temps à Kubernetes, aux tests de charge et à l'autoscaling.
 
-| Application | Image Docker | Taille | Justification du choix |
-|---|---|---|---|
-| **Stripe Checkout** | `mheib007/stripe-app:v3` | 61,31 Mo* | Application de paiement Stripe, simple à tester. |
-| **Podinfo** | `stefanprodan/podinfo:6.17.0` | ≈ 34 Mo** | Application Go légère, adaptée aux tests Kubernetes. |
-| **Dashboard Maker** | `randomsi/dashboard-maker:1.1.1` | ≈ 47 Mo** | Interface Flask sans base de données externe. |
+| Application | Taille connue | Méthode |
+|---|---:|---|
+| **Stripe Checkout** (`mheib007/stripe-app:v3`) | **61,31 Mo** | Taille locale non compressée, mesurée avec `docker image inspect`. |
+| **Podinfo** (`6.17.0`) | **≈ 34 Mo** | Taille compressée indiquée sur Docker Hub (AMD64). |
+| **Dashboard Maker** (`1.1.1`) | **≈ 47 Mo** | Taille compressée indiquée sur Docker Hub (AMD64). |
 
-* Taille locale non compressée, vérifiée avec `docker image inspect`.
-** Tailles compressées indiquées sur Docker Hub, à ne pas comparer directement à la taille locale Stripe.
-  
+*Les tailles locales et compressées sont données à titre indicatif et ne sont pas directement comparables.*
+
 ## 🏗️ Architecture du projet
 
-Le projet repose sur trois environnements Kubernetes :
-**mlops**, **preprod** et **prod**.
+L'architecture cible comporte **trois environnements Kubernetes** : `mlops`, `preprod` et `prod`. Chaque environnement doit héberger les mêmes trois applications, avec **3 pods minimum et 20 maximum par application** grâce à un HPA.
 
-Chaque environnement héberge trois applications avec
-un HPA permettant de passer de 3 à 20 pods.
+> Ce schéma représente **l'objectif final** du TP. Pour l'instant, le déploiement et les premiers tests des trois applications sont confirmés dans Preprod.
 
 ```mermaid
 flowchart TB
     USER["Utilisateur externe"]
     K6["k6 - Tests de charge"]
 
-    subgraph CLUSTER["Cluster Kubernetes"]
+    subgraph K8S["Cluster Kubernetes - Minikube"]
         METRICS["Metrics Server"]
 
-        subgraph MLOPS["Namespace mlops"]
-            M1["Flask Stripe - NodePort<br/>3 à 20 pods"]
-            M2["Podinfo Go - NodePort<br/>3 à 20 pods"]
-            M3["Dashboard Maker - ClusterIP<br/>3 à 20 pods"]
+        subgraph MLOPS["Namespace mlops - cible"]
+            M1["Stripe Checkout<br/>LoadBalancer<br/>3 à 20 pods - HPA"]
+            M2["Podinfo Go<br/>NodePort<br/>3 à 20 pods - HPA"]
+            M3["Dashboard Maker<br/>ClusterIP interne<br/>3 à 20 pods - HPA"]
         end
 
         subgraph PREPROD["Namespace preprod"]
-            P1["Flask Stripe - NodePort<br/>3 à 20 pods"]
-            P2["Podinfo Go - NodePort<br/>3 à 20 pods"]
-            P3["Dashboard Maker - ClusterIP<br/>3 à 20 pods"]
+            P1["Stripe Checkout<br/>LoadBalancer<br/>3 à 20 pods - HPA prévu"]
+            P2["Podinfo Go<br/>NodePort<br/>3 à 20 pods - HPA prévu"]
+            P3["Dashboard Maker<br/>ClusterIP interne<br/>3 à 20 pods - HPA prévu"]
         end
 
-        subgraph PROD["Namespace prod"]
-            R1["Flask Stripe - NodePort<br/>3 à 20 pods"]
-            R2["Podinfo Go - NodePort<br/>3 à 20 pods"]
-            R3["Dashboard Maker - ClusterIP<br/>3 à 20 pods"]
+        subgraph PROD["Namespace prod - cible"]
+            R1["Stripe Checkout<br/>LoadBalancer<br/>3 à 20 pods - HPA"]
+            R2["Podinfo Go<br/>NodePort<br/>3 à 20 pods - HPA"]
+            R3["Dashboard Maker<br/>ClusterIP interne<br/>3 à 20 pods - HPA"]
         end
 
-        NET["Netdata - Observabilité"]
+        NET["Netdata - Observabilité prévue"]
     end
 
-    subgraph STRIPE["Plateforme Stripe"]
+    subgraph STRIPE["Services Stripe - hors du cluster"]
         API["API Stripe"]
-        CHECKOUT["Stripe Checkout"]
-        DASH["Dashboard Stripe"]
+        CHECKOUT["Page Stripe Checkout"]
+        DASH["Dashboard Stripe - paiements de test"]
     end
 
     USER --> P1
@@ -83,156 +78,122 @@ flowchart TB
     USER -.-> M1 & M2
     USER -.-> R1 & R2
 
-    P1 -->|"Créer une session"| API
+    P1 -->|"Création d'une session"| API
     USER -->|"Paiement sécurisé"| CHECKOUT
     CHECKOUT --> API
     API --> DASH
-    CHECKOUT -.->|"Retour utilisateur"| USER
-
+    CHECKOUT -.->|"Retour après paiement"| USER
     M1 -.-> API
     R1 -.-> API
 
-    K6 -.-> CLUSTER
+    K6 -.->|"Charge HTTP"| K8S
     METRICS -.-> MLOPS
     METRICS -.-> PREPROD
     METRICS -.-> PROD
-
-    CLUSTER -.-> NET
+    K8S -.-> NET
 ```
+
+### Fonctionnement des composants
+
+- **LoadBalancer** : Service utilisé par Stripe ; l'accès a pour l'instant été vérifié avec un `port-forward`.
+- **NodePort** : Service utilisé pour rendre Podinfo accessible depuis l'extérieur du cluster.
+- **ClusterIP** : Service interne utilisé pour Dashboard Maker.
+- **HPA** : adaptation automatique du nombre de pods entre 3 et 20 selon la charge CPU (à mettre en place).
+- **Metrics Server** : fournit les métriques CPU utilisées par le HPA.
+- **k6** : outil prévu pour les tests de charge HTTP.
+- **Netdata** : outil d'observabilité web envisagé pour suivre les performances.
+- **Stripe Checkout** : paiement de test et vérification de la transaction dans Stripe.
+
+## Premiers résultats dans Preprod
+
 ### Application 1 : Stripe Checkout
 
-**Statut : premier paiement de test validé**
+**Statut : paiement de test validé.**
 
-L'application Stripe Checkout permet de simuler des paiements en ligne depuis notre environnement Kubernetes.
+L'application Stripe utilise l'image Docker **`mheib007/stripe-app:v3`**, réalisée à partir d'un [exemple Stripe](https://github.com/stripe-samples/checkout-one-time-payments) et adaptée par Mattéo.
 
-Nous utilisons l'exemple Stripe adapté et conteneurisé par Mattéo, avec l'image Docker `mheib007/stripe-app:v3`.
+- **Namespace :** `preprod-ch-04-11-2026`
+- **Deployment :** `stripe-deployment-ch-04-11-2026`
+- **Service :** `LoadBalancer`, port `4242`
+- **Replicas initiaux :** 3
+- **Configuration :** Secret Kubernetes pour les clés Stripe et l'identifiant du prix
+- **Ressources :** 100m CPU et 128 MiB de RAM demandés par conteneur ; limites de 250m CPU et 256 MiB de RAM
 
-**Configuration Kubernetes :**
+L'application a été testée depuis un poste Windows avec un transfert de port Kubernetes. Un **paiement fictif de 250 €** a été effectué et apparaît comme **réussi dans le Dashboard Stripe en mode test**.
 
-- Namespace : `preprod-ch-04-11-2026`
-- Deployment : `stripe-deployment-ch-04-11-2026`
-- Service : `LoadBalancer`, port `4242`
-- Nombre de replicas initial : 3
-- Configuration : Secret Kubernetes contenant les clés API Stripe et l'identifiant du prix
-- Ressources : 100m CPU et 128 MiB de RAM demandés par conteneur
-
-**Résultats des premiers tests :**
-
-L'application est accessible depuis le poste de test grâce à un transfert de port Kubernetes. Un paiement fictif de **250 €** a été effectué avec succès et confirmé dans le Dashboard Stripe.
-
-Le HPA, les tests de charge et la reproduction dans les autres namespaces restent à réaliser.
-
-[Consulter les captures et les résultats du test Stripe](App-Stripe/README.md)
+[Voir les captures et les résultats du test Stripe](App-Stripe/README.md)
 
 ### Application 2 : Podinfo (Go)
 
-**Statut : application accessible et test HTTP validé**
+**Statut : application accessible, test HTTP validé.**
 
-L'application Podinfo v6.17.0 a été déployée sur Minikube dans l'environnement `preprod-ch-04-11-2026`.
+Podinfo **v6.17.0** fonctionne dans `preprod-ch-04-11-2026`. L'interface a été ouverte dans un navigateur et une requête HTTP depuis Windows a retourné **200 OK**. L'accès a été testé avec un transfert de port Kubernetes sur le port `9898`.
 
-Nous avons vérifié son fonctionnement depuis un navigateur et effectué un test HTTP depuis Windows, avec une réponse **200 OK**.
-
-L'accès a été testé avec un transfert de port Kubernetes sur le port `9898`.
-
-Les tests HPA et k6 restent à réaliser.
-
-[Consulter les captures et résultats Podinfo](App-Podinfo/README.md)
+[Voir les captures et les résultats Podinfo](App-Podinfo/README.md)
 
 ### Application 3 : Dashboard Maker (Flask)
 
-**Statut : accès interne et test HTTP validés**
+**Statut : accès interne et test HTTP validés.**
 
-Notre troisième application utilise un Service Kubernetes de type **ClusterIP**, sur le port `5000`, dans le namespace `preprod-ch-04-11-2026`.
+Dashboard Maker utilise un Service **ClusterIP**, sur le port `5000`, dans `preprod-ch-04-11-2026`. Une requête HTTP depuis Minikube a retourné **200 OK**.
 
-Nous avons vérifié l'accessibilité du service depuis Minikube avec une requête HTTP ayant retourné le code **200 OK**.
-
-Les vérifications des replicas, du HPA et les tests de charge restent à effectuer.
-
-[Consulter les captures et résultats Dashboard Maker](App-Dashboard/README.md)
+[Voir les captures et les résultats Dashboard Maker](App-Dashboard/README.md)
 
 ### Vérification des replicas dans Preprod
 
-Nous avons vérifié le déploiement des trois applications dans le namespace `preprod-ch-04-11-2026`.
+La commande `kubectl get pods -n preprod-ch-04-11-2026` montre que les **9 pods sont opérationnels**, avec `1/1 Ready`, le statut `Running` et aucun redémarrage sur la capture.
 
-La commande `kubectl get pods` confirme que les **9 pods sont opérationnels**, avec le statut `Running`, `1/1 Ready` et aucun redémarrage.
-
-| Application | Replicas | État |
-|---|---|---|
+| Application | Pods opérationnels | État |
+|---|---:|---|
 | Stripe Checkout | 3/3 | Running |
 | Podinfo | 3/3 | Running |
 | Dashboard Maker | 3/3 | Running |
 | **Total** | **9/9** | **Opérationnel** |
 
-**Capture de vérification :**
+![Vérification des neuf pods dans Preprod](captures/pods-preprod-9-running.png)
 
-![Vérification des 9 pods dans Preprod](captures/pods-preprod-9-running.png)
+## Organisation Kubernetes et tests restants
 
-Cette vérification confirme que les trois applications sont déployées avec le nombre initial de replicas demandé dans le TP.
+Nous devons reproduire les mêmes applications dans les trois environnements **`mlops`**, **`preprod`** et **`prod`**, avec des noms de ressources utilisant l'empreinte `ch-04-11-2026`.
 
-### Fonctionnement
+Pour terminer le TP, nous prévoyons de :
 
-- **NodePort** : accès externe aux applications Stripe et Podinfo.
-- **ClusterIP** : accès interne à Dashboard Maker.
-- **HPA** : adaptation automatique entre 3 et 20 replicas.
-- **Metrics Server** : récupération de la consommation CPU.
-- **k6** : génération de charge HTTP.
-- **Netdata** : visualisation des performances.
-- **Stripe Checkout** : réalisation et vérification des paiements tests.
+1. Vérifier les applications et leurs trois replicas dans **les trois namespaces**.
+2. Configurer un **HPA de 3 à 20 pods** pour chaque application, avec des ressources CPU et mémoire adaptées.
+3. Réaliser des **tests de charge avec k6** et observer l'augmentation puis la diminution du nombre de pods.
+4. Installer une **solution d'observabilité avec interface web** (par exemple Netdata).
+5. Conserver les **captures, événements Kubernetes, logs et historiques des commandes**, ainsi que les erreurs rencontrées et leurs corrections.
 
----
-## Organisation Kubernetes
-
-Nous devons déployer les mêmes applications dans **trois environnements** :
-
-- `mlops`
-- `preprod`
-- `prod`
-
-Pour chaque application, nous prévoyons :
-
-- Un **Deployment** avec **3 pods** au minimum.
-- Un **Service** : accès externe pour Stripe et Podinfo (`NodePort`) ; accès interne pour Dashboard Maker (`ClusterIP`).
-- Un **HPA** (*Horizontal Pod Autoscaler*) pour passer de **3 à 20 pods maximum** selon la charge.
-- Des limites de **CPU et de mémoire** adaptées après nos mesures.
-
-Les paramètres et les clés Stripe seront séparés du code avec des **ConfigMaps** et des **Secrets**. **Aucune clé secrète ne sera publiée sur GitHub.**
-
-## Tests à réaliser
-
-1. Vérifier que les trois applications démarrent et répondent correctement.
-2. Effectuer un **paiement de test Stripe**, puis retrouver la transaction dans le Dashboard Stripe.
-3. Utiliser **k6** pour générer du trafic sur chaque application.
-4. Observer l'augmentation et la diminution du nombre de pods grâce au **HPA**.
-5. Déployer un outil d'observabilité avec interface web, par exemple **Netdata**, pour suivre la charge.
-
-Nous conserverons les résultats des tests, les commandes exécutées, les logs et les événements Kubernetes.
+Les clés Stripe doivent rester dans des **Secrets Kubernetes**, sans publier de véritables clés API sur GitHub. Les éventuels fichiers d'exemple utiliseront uniquement des valeurs fictives.
 
 ## Répartition du travail
 
 | Membre | Rôle principal |
 |---|---|
-| **Mohamed CHAOUAY TISSIR** | Création et organisation du dépôt GitHub, rédaction du README, explication des choix, suivi de la documentation et aide pendant le TP. |
-| **Mattéo HEIB** | Déploiements sur son PC, création des fichiers Kubernetes, tests des applications, HPA et observabilité, puis ajout des fichiers dans le dépôt. |
+| **Mohamed CHAOUAY TISSIR** | Organisation du dépôt GitHub, rédaction du README, documentation des choix et des résultats, aide technique pendant le TP. |
+| **Mattéo HEIB** | Création des fichiers YAML et des images nécessaires, déploiements sur son PC, tests Kubernetes, HPA et observabilité. |
 
-Nous travaillons ensemble sur les vérifications, les difficultés rencontrées et la préparation de l'oral. **Chacun rédige son propre compte rendu**, comme demandé dans le sujet.
+Nous travaillons ensemble sur les vérifications et la préparation de l'oral. **Chacun rédige son propre compte rendu**, comme demandé par le professeur.
 
 ## Suivi du projet
 
-- [x] Dépôt GitHub créé.
+- [x] Dépôt GitHub créé et documenté.
 - [x] Trois applications choisies.
-- [ ] Images Docker Hub disponibles avec l'empreinte demandée.
-- [ ] Applications déployées dans `mlops`, `preprod` et `prod`.
-- [ ] Paiement Stripe validé.
-- [ ] Tests k6 et HPA réalisés.
+- [x] Applications fonctionnelles dans **Preprod** : 9 pods sur 9.
+- [x] Paiement Stripe fictif de **250 €** validé.
+- [x] Schéma d'architecture Mermaid et premières captures ajoutés.
+- [ ] Vérification et conformité de toutes les images / noms avec l'empreinte demandée.
+- [ ] Déploiement vérifié dans **mlops**, **preprod** et **prod**.
+- [ ] Tests de charge k6 et autoscaling HPA réalisés pour les trois applications.
 - [ ] Observabilité installée et testée.
-- [ ] Logs, captures, historique des commandes et schéma d'architecture ajoutés.
+- [ ] Logs, événements et historiques de commandes rassemblés.
 - [ ] Comptes rendus individuels et oral préparés.
 
-Nous ferons des **commits réguliers avec des messages explicites**, au fur et à mesure de l'avancement du projet. Les erreurs rencontrées et leur résolution seront également documentées.
+Nous réalisons des **commits réguliers et explicites** pour suivre l'avancement du projet.
 
 ## Documentation utile
 
-- [Sujet Stripe Checkout](https://docs.stripe.com/payments/checkout)
+- [Stripe Checkout](https://docs.stripe.com/payments/checkout)
 - [Kubernetes : Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 - [Kubernetes : Services](https://kubernetes.io/docs/concepts/services-networking/service/)
 - [Kubernetes : HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
