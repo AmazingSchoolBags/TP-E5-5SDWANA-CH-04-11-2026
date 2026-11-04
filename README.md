@@ -122,7 +122,7 @@ L'application est accessible depuis le poste de test grâce à un transfert de p
 
 Le HPA, les tests de charge et la reproduction dans les autres namespaces restent à réaliser.
 
-[Consulter les captures et les résultats du test Stripe](captures/App-Stripe/README.md)
+[Consulter les captures et les résultats du test Stripe](App-Stripe/README.md)
 
 ### Application 2 : Podinfo (Go)
 
