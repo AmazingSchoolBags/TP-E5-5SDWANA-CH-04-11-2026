@@ -236,7 +236,6 @@ Cette solution nous permet de suivre les métriques système (CPU, RAM, disque e
 4. Vérifier, si nécessaire, l'accès externe des Services Stripe `LoadBalancer` (leur `EXTERNAL-IP` apparaissait encore comme `<pending>`).
 5. Finaliser les **comptes rendus individuels** et préparer l'oral.
 
-**Sécurité :** aucune clé secrète Stripe ne doit être publiée dans ce dépôt public. Les Secrets Kubernetes sont créés à partir de valeurs non versionnées ; les éventuels exemples YAML ne doivent contenir que des valeurs fictives. Toute clé ayant déjà été publiée doit être révoquée et remplacée, car elle peut rester visible dans l'historique Git.
 
 ## Répartition du travail
 
